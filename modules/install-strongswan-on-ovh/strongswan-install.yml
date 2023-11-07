@@ -1,0 +1,9 @@
+---                             # Conventionally YAML file starts with '---'
+- hosts: webservers             # Target managed hosts, tasks will run on/toward. 
+  user: ubuntu
+  become: yes
+  vars_files:
+    - "vars/variables.yml"
+  roles:
+  - strongswan
+

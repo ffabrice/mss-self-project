@@ -1,0 +1,13 @@
+---                                         # Conventionally YAML file starts with '---'
+- name: Simple nginx installation           # Descriptive play name
+  gather_facts: yes                         # Gather `facts` on the target host and store them in `ansible_facts` variable
+  hosts: webservers                         # Target managed hosts, tasks will run on/toward. 
+  
+  tasks:                                    # List of tasks for the play
+  - name: Install nginx package             # Name of the task
+    ansible.builtin.apt:                    # Module name 
+      update_cache: yes                     
+      pkg:                                  
+        - nginx                             
+      state: present                        
+    become: true     

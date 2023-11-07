@@ -1,0 +1,41 @@
+---                                         
+- name: Configure a new virtualhost          
+  gather_facts: yes                         
+  hosts: webservers
+  become: true
+  
+  vars_files:
+    - vars/generic.yml
+  
+  vars:
+    main_server : true
+
+  tasks:  
+  - name: "create www directory for your virtualhost"
+    ansible.builtin.file:
+      path: /var/www/{{ domain  }}
+      state: directory
+      mode: '0775'
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+
+  - name: delete default nginx site configuration
+    ansible.builtin.file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+    notify: restart nginx
+
+  - name: deploy new site configuration
+    ansible.builtin.template:
+      src: templates/devops.conf.j2
+      dest: /etc/nginx/sites-enabled/devops
+      owner: root
+      group: root
+      mode: '0644'
+    notify: restart nginx
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted

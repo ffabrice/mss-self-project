@@ -1,0 +1,48 @@
+# Tasks to install and configure strongSwan
+# Tunnel 1
+if [ -d "/sys/class/net/Tunnel1" ]; then
+    sudo ip link set Tunnel1 type vti local {{ansible_host}} remote {{ tunnel1_address }} key 100
+    sudo ip addr change {{ tunnel1_cgw_inside_address }} remote {{ tunnel1_vgw_inside_address }} dev Tunnel1
+    sudo ip route change {{ vpc_cidr }} dev Tunnel1 metric 100
+else
+    sudo ip link add Tunnel1 type vti local {{ansible_host}} remote {{ tunnel1_address }} key 100
+    sudo ip addr add {{ tunnel1_cgw_inside_address }} remote {{ tunnel1_vgw_inside_address }} dev Tunnel1
+    sudo ip link set Tunnel1 up mtu 1419
+    sudo ip route add {{ vpc_cidr }} dev Tunnel1 metric 100
+fi
+sudo ip link set Tunnel1 up mtu 1419
+# Tunnel 2
+if [ -d "/sys/class/net/Tunnel2" ]; then
+    sudo ip link set Tunnel2 type vti local {{ansible_host}} remote {{ tunnel2_address }} key 200
+    sudo ip addr change {{ tunnel2_cgw_inside_address }} remote {{ tunnel2_vgw_inside_address }} dev Tunnel2
+    sudo ip route change {{ vpc_cidr }} dev Tunnel2 metric 200
+else
+    sudo ip link add Tunnel2 type vti local {{ ansible_host}} remote {{ tunnel2_address }} key 200
+    sudo ip addr add {{ tunnel2_cgw_inside_address }} remote {{ tunnel2_vgw_inside_address }} dev Tunnel2
+    sudo ip link set Tunnel2 up mtu 1419
+    sudo ip route add {{ vpc_cidr }} dev Tunnel2 metric 200
+fi
+sudo ip link set Tunnel2 up mtu 1419
+# loopback @TODO ajout loopback
+sudo ip link add name loopback1 type dummy
+sudo ip link set loopback1 up
+sudo ip addr add {{ ovh_loopback_ip }} dev loopback1
+# IP Tables
+sudo iptables -t mangle -A FORWARD -o Tunnel1 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+sudo iptables -t mangle -A FORWARD -o Tunnel2 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+sudo iptables -t mangle -A INPUT -p esp -s {{ tunnel1_address }} -d {{ansible_host}} -j MARK --set-xmark 100
+sudo iptables -t mangle -A INPUT -p esp -s {{ tunnel2_address }} -d {{ansible_host}} -j MARK --set-xmark 200
+# Strongswan/Charon
+sudo sed -i "s/# install_routes = yes/install_routes = no/g" /etc/strongswan.d/charon.conf
+# Linux Sysctl
+sudo sysctl -w net.ipv4.ip_forward=1
+sudo sysctl -w net.ipv4.conf.Tunnel1.rp_filter=2
+sudo sysctl -w net.ipv4.conf.Tunnel1.disable_policy=1
+sudo sysctl -w net.ipv4.conf.Tunnel2.rp_filter=2
+sudo sysctl -w net.ipv4.conf.Tunnel2.disable_policy=1
+sudo sysctl -w net.ipv4.conf.ens3.disable_xfrm=1
+sudo sysctl -w net.ipv4.conf.ens3.disable_policy=1
+sudo sysctl -p
+# Restart Strongswan
+# sudo ipsec restart
+sudo systemctl restart ipsec

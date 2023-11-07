@@ -1,0 +1,60 @@
+# {{ ansible_managed }}
+
+config setup
+        charondebug="all"
+        uniqueids=yes
+        strictcrlpolicy=no
+
+# Add connections here.
+
+conn Tunnel1
+        type=tunnel
+        auto=start
+        keyexchange=ikev2
+        authby=psk
+        leftid={{ ansible_host }}
+        leftsubnet={{ local_cidr }}
+        right={{ tunnel1_address }}
+        rightsubnet={{ vpc_cidr }}
+        aggressive=no
+        ikelifetime=28800s
+        lifetime=3600s
+        margintime=270s
+        rekey=yes
+        rekeyfuzz=100%
+        fragmentation=yes
+        replay_window=1024
+        dpddelay=30s
+        dpdtimeout=120s
+        dpdaction=restart
+        ike=aes128-sha1-modp1024
+        esp=aes128-sha1-modp1024
+        keyingtries=%forever
+        
+        mark=100
+
+conn Tunnel2
+	type=tunnel
+	auto=start
+	keyexchange=ikev2
+	authby=psk
+	leftid={{ ansible_host }}
+	leftsubnet={{ local_cidr }}
+	right={{ tunnel2_address }}
+	rightsubnet={{ vpc_cidr }}
+	aggressive=no
+	ikelifetime=28800s
+	lifetime=3600s
+	margintime=270s
+	rekey=yes
+	rekeyfuzz=100%
+	fragmentation=yes
+	replay_window=1024
+	dpddelay=30s
+	dpdtimeout=120s
+	dpdaction=restart
+	ike=aes128-sha1-modp1024
+	esp=aes128-sha1-modp1024
+	keyingtries=%forever
+
+        mark=200

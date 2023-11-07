@@ -1,0 +1,1487 @@
+ubuntu@Ubuntu-22:~/MSSS/work/TESTFINALPROJECT/mss-self-project$ sudo docker run -t -v .:/path checkmarx/kics:latest scan -p /path -o "/path/"
+
+Unable to find image 'checkmarx/kics:latest' locally
+
+latest: Pulling from checkmarx/kics
+
+96526aa774ef: Pull complete 
+
+b448d3d04f83: Pull complete 
+
+a1c93c75b7b9: Pull complete 
+
+10b9e7065d59: Pull complete 
+7388112ff7a9: Pull complete 
+ff0d858b8a14: Pull complete 
+f30420aaaa0e: Pull complete 
+0469bc75114a: Pull complete 
+4f4fb700ef54: Pull complete 
+Digest: sha256:f4500fece706e5dba3e273ba7c14d470d73c630f62f30f39c297f30ee669ecde
+Status: Downloaded newer image for checkmarx/kics:latest
+
+                   .0MO.                                    
+                   OMMMx                                    
+                   ;NMX;                                    
+                    ...           ...              ....     
+WMMMd     cWMMM0.  KMMMO      ;xKWMMMMNOc.     ,xXMMMMMWXkc.
+WMMMd   .0MMMN:    KMMMO    :XMMMMMMMMMMMWl   xMMMMMWMMMMMMl
+WMMMd  lWMMMO.     KMMMO   xMMMMKc...'lXMk   ,MMMMx   .;dXx 
+WMMMd.0MMMX;       KMMMO  cMMMMd        '    'MMMMNl'       
+WMMMNWMMMMl        KMMMO  0MMMN               oMMMMMMMXkl.  
+WMMMMMMMMMMo       KMMMO  0MMMX                .ckKWMMMMMM0.
+WMMMMWokMMMMk      KMMMO  oMMMMc              .     .:OMMMM0
+WMMMK.  dMMMM0.    KMMMO   KMMMMx'    ,kNc   :WOc.    .NMMMX
+WMMMd    cWMMMX.   KMMMO    kMMMMMWXNMMMMMd .WMMMMWKO0NMMMMl
+WMMMd     ,NMMMN,  KMMMO     'xNMMMMMMMNx,   .l0WMMMMMMMWk, 
+xkkk:      ,kkkkx  okkkl        ;xKXKx;          ;dOKKkc    
+
+
+Scanning with Keeping Infrastructure as Code Secure v1.7.10
+
+
+Preparing Scan Assets: Done                                                                                                                                                                                                                                                        
+Executing queries: [---------------------------------------------------] 100.00%
+
+Files scanned: 20
+Parsed files: 20
+Queries loaded: 1337
+Queries failed to execute: 0
+
+------------------------------------
+
+Variable Without Description, Severity: INFO, Results: 113
+Description: All variables should contain a valid description.
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/common/2a153952-2544-4687-bcc9-cc8fea814a9b
+
+	[1]: ../../path/modules/create-ovh-instance/variables.tf:10
+
+		009: }
+		010: variable "ovh_instance_name_sufx" {
+		011:   type = string
+
+
+	[2]: ../../path/modules/create-ovh-instance/variables.tf:4
+
+		003: }
+		004: variable "ssh_ovh_key_name_sufx" {
+		005:   type = string
+
+
+	[3]: ../../path/variables.tf:101
+
+		100: }
+		101: variable "aws_ec2_instance_type" {
+		102:   type = string
+
+
+	[4]: ../../path/variables.tf:74
+
+		073: }
+		074: variable "ssh_aws_key_name_sufx" {
+		075:   type = string
+
+
+	[5]: ../../path/variables.tf:104
+
+		103: }
+		104: variable "aws_ec2_instance_sufx" {
+		105:   type = string
+
+
+	[6]: ../../path/modules/create-ec2-instance/variable.tf:64
+
+		063: }
+		064: variable "aws_ami_filter_architecture_name" {
+		065:   type = string
+
+
+	[7]: ../../path/modules/create-ec2-instance/variable.tf:34
+
+		033: }
+		034: variable "aws_security_group_sufx_ssh" {
+		035:   type = string
+
+
+	[8]: ../../path/modules/create-ovh-instance/variables.tf:7
+
+		006: }
+		007: variable "ssh_ovh_privatekey_file_name" {
+		008:   type = string
+
+
+	[9]: ../../path/variables.tf:121
+
+		120: }
+		121: variable "aws_customergw_sufx" {
+		122:   type = string
+
+
+	[10]: ../../path/modules/create-ec2-instance/variable.tf:55
+
+		054: }
+		055: variable "ssh_aws_private_key_filename" {
+		056:   type = string
+
+
+	[11]: ../../path/modules/create-ovh-instance/variables.tf:13
+
+		012: }
+		013: variable "ovh_image_name" {
+		014:   type = string
+
+
+	[12]: ../../path/variables.tf:124
+
+		123: }
+		124: variable "aws_customer_gateway_asn" {
+		125:   type = string
+
+
+	[13]: ../../path/variables.tf:29
+
+		028: }
+		029: variable "aws_region" {
+		030:   type = string
+
+
+	[14]: ../../path/variables.tf:59
+
+		058: }
+		059: variable "aws_security_group_sufx_ssh" {
+		060:   type = string
+
+
+	[15]: ../../path/variables.tf:83
+
+		082: }
+		083: variable "ssh_aws_private_key_filename" {
+		084:   type = string
+
+
+	[16]: ../../path/variables.tf:160
+
+		159: }
+		160: variable "ansible_website_playbook" {
+		161:   type = string
+
+
+	[17]: ../../path/modules/create-ec2-instance/variable.tf:49
+
+		048: }
+		049: variable "aws_algorithm_name" {
+		050:   type = string
+
+
+	[18]: ../../path/modules/create-ovh-instance/variables.tf:16
+
+		015: }
+		016: variable "ovh_flavor_name" {
+		017:   type = string
+
+
+	[19]: ../../path/variables.tf:68
+
+		067: }
+		068: variable "aws_security_group_sufx_http" {
+		069:   type = string
+
+
+	[20]: ../../path/modules/create-ec2-instance/variable.tf:16
+
+		015: }
+		016: variable "aws_subnet_public_sufx" {
+		017:   type = string
+
+
+	[21]: ../../path/variables.tf:13
+
+		012: }
+		013: variable "ovh_image_name" {
+		014:   type = string
+
+
+	[22]: ../../path/variables.tf:145
+
+		144: }
+		145: variable "ansible_nginx_inventory_file" {
+		146:   type = string
+
+
+	[23]: ../../path/variables.tf:35
+
+		034: }
+		035: variable "aws_cidr_vpc" {
+		036:   type = string
+
+
+	[24]: ../../path/modules/deploy-vpn-connection/variable.tf:43
+
+		042: }
+		043: variable "ansible_strongswan_vars_file" {
+		044:     type = string
+
+
+	[25]: ../../path/variables.tf:169
+
+		168: }
+		169: variable "ansible_strongswan_vars_file" {
+		170:   type = string
+
+
+	[26]: ../../path/variables.tf:98
+
+		097: }
+		098: variable "aws_ami_owner" {
+		099:   type = string
+
+
+	[27]: ../../path/variables.tf:71
+
+		070: }
+		071: variable "aws_security_group_sufx_https" {
+		072:   type = string
+
+
+	[28]: ../../path/variables.tf:16
+
+		015: }
+		016: variable "ovh_flavor_name" {
+		017:   type = string
+
+
+	[29]: ../../path/variables.tf:38
+
+		037: }
+		038: variable "aws_cidr_public" {
+		039:   type = string
+
+
+	[30]: ../../path/variables.tf:53
+
+		052: }
+		053: variable "aws_public_routetable_cidr_block" {
+		054:   type = string
+
+
+	[31]: ../../path/variables.tf:65
+
+		064: }
+		065: variable "aws_security_group_sufx_icmp" {
+		066:   type = string
+
+
+	[32]: ../../path/modules/create-ec2-instance/variable.tf:70
+
+		069: }
+		070: variable "aws_ami_owner" {
+		071:   type = string
+
+
+	[33]: ../../path/variables.tf:184
+
+		183: }
+		184: variable "ansible_check_inventory_file" {
+		185:   type = string
+
+
+	[34]: ../../path/variables.tf:107
+
+		106: }
+		107: variable "aws_ec2_instance_public_ip" {
+		108:   type = string
+
+
+	[35]: ../../path/variables.tf:56
+
+		055: }
+		056: variable "aws_public_routetable_sufx" {
+		057:   type = string
+
+
+	[36]: ../../path/variables.tf:62
+
+		061: }
+		062: variable "aws_security_group_sufx_rdp" {
+		063:   type = string
+
+
+	[37]: ../../path/variables.tf:7
+
+		006: }
+		007: variable "ssh_ovh_privatekey_file_name" {
+		008:   type = string
+
+
+	[38]: ../../path/modules/create-ec2-instance/variable.tf:52
+
+		051: }
+		052: variable "aws_rsa_bits" {
+		053:   type = number
+
+
+	[39]: ../../path/variables.tf:77
+
+		076: }
+		077: variable "aws_algorithm_name" {
+		078:   type = string
+
+
+	[40]: ../../path/modules/create-ec2-instance/variable.tf:28
+
+		027: }
+		028: variable "aws_public_routetable_cidr_block" {
+		029:   type = string
+
+
+	[41]: ../../path/variables.tf:181
+
+		180: }
+		181: variable "ansible_check_conf" {
+		182:   type = string
+
+
+	[42]: ../../path/variables.tf:41
+
+		040: }
+		041: variable "aws_subnet_public_sufx" {
+		042:   type = string
+
+
+	[43]: ../../path/modules/create-ec2-instance/variable.tf:61
+
+		060: }
+		061: variable "aws_ami_filter_name_value" {
+		062:   type = string
+
+
+	[44]: ../../path/modules/deploy-vpn-connection/variable.tf:31
+
+		030: }
+		031: variable "aws_customer_gateway_type" {
+		032:     type = string
+
+
+	[45]: ../../path/variables.tf:178
+
+		177: }
+		178: variable "ansible_strongswan_playbook" {
+		179:   type = string
+
+
+	[46]: ../../path/variables.tf:4
+
+		003: }
+		004: variable "ssh_ovh_key_name_sufx" {
+		005:   type = string
+
+
+	[47]: ../../path/modules/create-ec2-instance/variable.tf:31
+
+		030: }
+		031: variable "aws_public_routetable_sufx" {
+		032:   type = string
+
+
+	[48]: ../../path/variables.tf:151
+
+		150: }
+		151: variable "ansible_website_config_file" {
+		152:   type = string
+
+
+	[49]: ../../path/variables.tf:22
+
+		021: }
+		022: variable "ovh_loopback_ip" {
+		023:   type = string
+
+
+	[50]: ../../path/modules/deploy-vpn-connection/variable.tf:10
+
+		009: }
+		010: variable "aws_cidr_vpc" {
+		011:   type = string
+
+
+	[51]: ../../path/modules/deploy-vpn-connection/variable.tf:46
+
+		045: }
+		046: variable "ovh_loopback_ip" {
+		047:   type = string
+
+
+	[52]: ../../path/variables.tf:89
+
+		088: }
+		089: variable "aws_ami_filter_name_value" {
+		090:   type = string
+
+
+	[53]: ../../path/modules/deploy-vpn-connection/variable.tf:40
+
+		039: }
+		040: variable "aws_vpn_connection_destination" {
+		041:     type = string
+
+
+	[54]: ../../path/variables.tf:163
+
+		162: }
+		163: variable "ansible_vhost_playbook" {
+		164:   type = string
+
+
+	[55]: ../../path/variables.tf:139
+
+		138: }
+		139: variable "aws_dns_zone" {
+		140:   type = string
+
+
+	[56]: ../../path/variables.tf:115
+
+		114: }
+		115: variable "aws_public_routetabletovgw_sufx" {
+		116:   type = string
+
+
+	[57]: ../../path/variables.tf:32
+
+		031: }
+		032: variable "aws_vpc_sufx" {
+		033:   type = string
+
+
+	[58]: ../../path/modules/create-ec2-instance/variable.tf:58
+
+		057: }
+		058: variable "aws_ami_filter_name_name" {
+		059:   type = string
+
+
+	[59]: ../../path/modules/create-ec2-instance/variable.tf:73
+
+		072: }
+		073: variable "aws_ec2_instance_type" {
+		074:   type = string
+
+
+	[60]: ../../path/modules/create-ec2-instance/variable.tf:22
+
+		021: }
+		022: variable "aws_subnet_private_sufx" {
+		023:   type = string
+
+
+	[61]: ../../path/modules/deploy-vpn-connection/variable.tf:16
+
+		015: }
+		016: variable "aws_public_routetabletovgw_sufx" {
+		017:   type = string
+
+
+	[62]: ../../path/variables.tf:166
+
+		165: }
+		166: variable "ansible_certificate_playbook" {
+		167:   type = string
+
+
+	[63]: ../../path/variables.tf:10
+
+		009: }
+		010: variable "ovh_instance_name_sufx" {
+		011:   type = string
+
+
+	[64]: ../../path/modules/create-ec2-instance/variable.tf:67
+
+		066: }
+		067: variable "aws_ami_filter_architecture_value" {
+		068:   type = string
+
+
+	[65]: ../../path/modules/create-ec2-instance/variable.tf:13
+
+		012: }
+		013: variable "aws_cidr_public" {
+		014:   type = string
+
+
+	[66]: ../../path/modules/deploy-vpn-connection/variable.tf:4
+
+		003: }
+		004: variable "aws_region" {
+		005:   type = string
+
+
+	[67]: ../../path/variables.tf:92
+
+		091: }
+		092: variable "aws_ami_filter_architecture_name" {
+		093:   type = string
+
+
+	[68]: ../../path/variables.tf:86
+
+		085: }
+		086: variable "aws_ami_filter_name_name" {
+		087:   type = string
+
+
+	[69]: ../../path/modules/deploy-vpn-connection/variable.tf:28
+
+		027: }
+		028: variable "aws_customer_gateway_asn" {
+		029:     type = string
+
+
+	[70]: ../../path/modules/deploy-vpn-connection/variable.tf:1
+
+		001: variable "aws_pod" {
+		002:   type = string
+		003: }
+
+
+	[71]: ../../path/variables.tf:118
+
+		117: }
+		118: variable "aws_vpngw_sufx" {
+		119:   type = string
+
+
+	[72]: ../../path/variables.tf:1
+
+		001: variable "pod" {
+		002:   type = string
+		003: }
+
+
+	[73]: ../../path/modules/create-ovh-instance/variables.tf:19
+
+		018: }
+		019: variable "ovh_network_name" {
+		020:   type = string
+
+
+	[74]: ../../path/modules/create-ec2-instance/variable.tf:76
+
+		075: }
+		076: variable "aws_ec2_instance_sufx" {
+		077:   type = string
+
+
+	[75]: ../../path/modules/create-ec2-instance/variable.tf:37
+
+		036: }
+		037: variable "aws_security_group_sufx_rdp" {
+		038:   type = string
+
+
+	[76]: ../../path/modules/create-ovh-instance/variables.tf:1
+
+		001: variable "pod" {
+		002:   type = string
+		003: }
+
+
+	[77]: ../../path/variables.tf:133
+
+		132: }
+		133: variable "aws_vpn_connection_sufx" {
+		134:   type = string
+
+
+	[78]: ../../path/modules/create-ec2-instance/variable.tf:1
+
+		001: variable "aws_pod" {
+		002:   type = string
+		003: }
+
+
+	[79]: ../../path/variables.tf:148
+
+		147: }
+		148: variable "ansible_nginx_playbook" {
+		149:   type = string
+
+
+	[80]: ../../path/variables.tf:127
+
+		126: }
+		127: variable "aws_customer_gateway_type" {
+		128:   type = string
+
+
+	[81]: ../../path/variables.tf:25
+
+		024: }
+		025: variable "ovh_instance_ip" {
+		026:   type = string
+
+
+	[82]: ../../path/variables.tf:187
+
+		186: }
+		187: variable "ansible_check_vars_file" {
+		188:   type = string
+
+
+	[83]: ../../path/modules/create-ec2-instance/variable.tf:4
+
+		003: }
+		004: variable "aws_region" {
+		005:   type = string
+
+
+	[84]: ../../path/variables.tf:157
+
+		156: }
+		157: variable "ansible_website_inventory_file" {
+		158:   type = string
+
+
+	[85]: ../../path/variables.tf:95
+
+		094: }
+		095: variable "aws_ami_filter_architecture_value" {
+		096:   type = string
+
+
+	[86]: ../../path/modules/create-ec2-instance/variable.tf:25
+
+		024: }
+		025: variable "aws_internet_gateway_sufx" {
+		026:   type = string
+
+
+	[87]: ../../path/modules/deploy-vpn-connection/variable.tf:34
+
+		033: }
+		034: variable "aws_vpn_connection_type" {
+		035:     type = string
+
+
+	[88]: ../../path/modules/deploy-vpn-connection/variable.tf:19
+
+		018: }
+		019: variable "aws_vpngw_sufx" {
+		020:   type = string
+
+
+	[89]: ../../path/variables.tf:80
+
+		079: }
+		080: variable "aws_rsa_bits" {
+		081:   type = number
+
+
+	[90]: ../../path/modules/create-ec2-instance/variable.tf:19
+
+		018: }
+		019: variable "aws_cidr_private" {
+		020:   type = string
+
+
+	[91]: ../../path/modules/create-ec2-instance/variable.tf:82
+
+		081: }
+		082: variable "aws_dns_record" {
+		083:   type = string
+
+
+	[92]: ../../path/modules/create-ec2-instance/variable.tf:79
+
+		078: }
+		079: variable "aws_dns_zone" {
+		080:   type = string
+
+
+	[93]: ../../path/modules/create-ec2-instance/variable.tf:43
+
+		042: }
+		043: variable "aws_security_group_sufx_http" {
+		044:   type = string
+
+
+	[94]: ../../path/modules/create-ec2-instance/variable.tf:40
+
+		039: }
+		040: variable "aws_security_group_sufx_icmp" {
+		041:   type = string
+
+
+	[95]: ../../path/modules/create-ec2-instance/variable.tf:7
+
+		006: }
+		007: variable "aws_vpc_sufx" {
+		008:   type = string
+
+
+	[96]: ../../path/variables.tf:47
+
+		046: }
+		047: variable "aws_subnet_private_sufx" {
+		048:   type = string
+
+
+	[97]: ../../path/variables.tf:136
+
+		135: }
+		136: variable "aws_vpn_connection_destination" {
+		137:   type = string
+
+
+	[98]: ../../path/modules/deploy-vpn-connection/variable.tf:7
+
+		006: }
+		007: variable "aws_vpc_sufx" {
+		008:   type = string
+
+
+	[99]: ../../path/variables.tf:154
+
+		153: }
+		154: variable "ansible_website_generic_file" {
+		155:   type = string
+
+
+	[100]: ../../path/variables.tf:130
+
+		129: }
+		130: variable "aws_vpn_connection_type" {
+		131:   type = string
+
+
+	[101]: ../../path/modules/deploy-vpn-connection/variable.tf:25
+
+		024: }
+		025: variable "aws_customer_gateway_ip" {
+		026:     type = string
+
+
+	[102]: ../../path/modules/deploy-vpn-connection/variable.tf:13
+
+		012: }
+		013: variable "aws_public_routetable_sufx" {
+		014:   type = string
+
+
+	[103]: ../../path/modules/deploy-vpn-connection/variable.tf:37
+
+		036: }
+		037: variable "aws_vpn_connection_sufx" {
+		038:     type = string
+
+
+	[104]: ../../path/variables.tf:142
+
+		141: }
+		142: variable "ansible_nginx_config_file" {
+		143:   type = string
+
+
+	[105]: ../../path/variables.tf:172
+
+		171: }
+		172: variable "ansible_strongswan_config_file" {
+		173:   type = string
+
+
+	[106]: ../../path/variables.tf:175
+
+		174: }
+		175: variable "ansible_strongswan_inventory_file" {
+		176:   type = string
+
+
+	[107]: ../../path/variables.tf:44
+
+		043: }
+		044: variable "aws_cidr_private" {
+		045:   type = string
+
+
+	[108]: ../../path/variables.tf:111
+
+		110: }
+		111: variable "aws_ec2_instance_private_ip" {
+		112:   type = string
+
+
+	[109]: ../../path/variables.tf:50
+
+		049: }
+		050: variable "aws_internet_gateway_sufx" {
+		051:   type = string
+
+
+	[110]: ../../path/variables.tf:19
+
+		018: }
+		019: variable "ovh_network_name" {
+		020:   type = string
+
+
+	[111]: ../../path/modules/deploy-vpn-connection/variable.tf:22
+
+		021: }
+		022: variable "aws_customergw_sufx" {
+		023:   type = string
+
+
+	[112]: ../../path/modules/create-ec2-instance/variable.tf:10
+
+		009: }
+		010: variable "aws_cidr_vpc" {
+		011:   type = string
+
+
+	[113]: ../../path/modules/create-ec2-instance/variable.tf:46
+
+		045: }
+		046: variable "ssh_aws_key_name_sufx" {
+		047:   type = string
+
+
+Resource Not Using Tags, Severity: INFO, Results: 16
+Description: AWS services resource tags are an essential part of managing components. As a best practice, the field 'tags' should have additional tags defined other than 'Name'
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:259
+
+		258: 
+		259:   tags = {
+		260:     Name = "${var.aws_pod}-${var.aws_ec2_instance_sufx}"
+
+
+	[2]: ../../path/modules/create-ec2-instance/main.tf:18
+
+		017: 
+		018:   tags = {
+		019:     Name = "${var.aws_pod}-${var.aws_subnet_public_sufx}"
+
+
+	[3]: ../../path/modules/deploy-vpn-connection/main.tf:34
+
+		033: 
+		034:   tags = {
+		035:     Name = "${var.aws_pod}-${var.aws_customergw_sufx}"
+
+
+	[4]: ../../path/modules/deploy-vpn-connection/main.tf:46
+
+		045: 
+		046:   tags = {
+		047:     Name = "${var.aws_pod}-${var.aws_vpn_connection_sufx}"
+
+
+	[5]: ../../path/modules/deploy-vpn-connection/main.tf:23
+
+		022: 
+		023:   tags = {
+		024:     Name = "${var.aws_pod}-${var.aws_vpngw_sufx}"
+
+
+	[6]: ../../path/modules/create-ec2-instance/main.tf:195
+
+		194: 
+		195:   tags = {
+		196:     Name = "${var.aws_pod}-${var.aws_security_group_sufx_http}"
+
+
+	[7]: ../../path/modules/create-ec2-instance/main.tf:28
+
+		027: 
+		028:   tags = {
+		029:     Name = "${var.aws_pod}-${var.aws_subnet_private_sufx}"
+
+
+	[8]: ../../path/modules/create-ec2-instance/main.tf:218
+
+		217: 
+		218:   tags = {
+		219:     Name = "${var.aws_pod}${var.ssh_aws_key_name_sufx}"
+
+
+	[9]: ../../path/modules/create-ec2-instance/main.tf:139
+
+		138: 
+		139:   tags = {
+		140:     Name = "${var.aws_pod}-${var.aws_security_group_sufx_icmp}"
+
+
+	[10]: ../../path/modules/create-ec2-instance/main.tf:167
+
+		166: 
+		167:   tags = {
+		168:     Name = "${var.aws_pod}-${var.aws_security_group_sufx_http}"
+
+
+	[11]: ../../path/modules/deploy-vpn-connection/main.tf:73
+
+		072: 
+		073:   tags = {
+		074:     Name = "${var.aws_pod}-${var.aws_public_routetabletovgw_sufx}"
+
+
+	[12]: ../../path/modules/create-ec2-instance/main.tf:85
+
+		084: 
+		085:   tags = {
+		086:     Name = "${var.aws_pod}-${var.aws_security_group_sufx_ssh}"
+
+
+	[13]: ../../path/modules/create-ec2-instance/main.tf:112
+
+		111: 
+		112:   tags = {
+		113:     Name = "${var.aws_pod}-${var.aws_security_group_sufx_rdp}"
+
+
+	[14]: ../../path/modules/create-ec2-instance/main.tf:51
+
+		050: 
+		051:   tags = {
+		052:     Name = "${var.aws_pod}-${var.aws_public_routetable_sufx}"
+
+
+	[15]: ../../path/modules/create-ec2-instance/main.tf:7
+
+		006:   
+		007:   tags = {
+		008:     Name = "${var.aws_pod}-${var.aws_vpc_sufx}"
+
+
+	[16]: ../../path/modules/create-ec2-instance/main.tf:37
+
+		036: 
+		037:   tags = {
+		038:     Name = "${var.aws_pod}-${var.aws_internet_gateway_sufx}"
+
+
+Output Without Description, Severity: INFO, Results: 19
+Description: All outputs should contain a valid description.
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/common/59312e8a-a64e-41e7-a252-618533dd1ea8
+
+	[1]: ../../path/modules/deploy-vpn-connection/output.tf:7
+
+		006: # Capture tunnel1 cgw inside adress
+		007: output "tunnel1_cgw_inside_address" {
+		008:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel1_cgw_inside_address
+
+
+	[2]: ../../path/modules/deploy-vpn-connection/output.tf:43
+
+		042: # Capture tunnel2 preshared key
+		043: output "tunnel2_preshared_key" {
+		044:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel2_preshared_key
+
+
+	[3]: ../../path/modules/deploy-vpn-connection/output.tf:17
+
+		016: # Capture 
+		017: output "tunnel1_preshared_key" {
+		018:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel1_preshared_key
+
+
+	[4]: ../../path/modules/create-ec2-instance/output.tf:4
+
+		003: }
+		004: output "aws_ec2_instance_private_ip" {
+		005:   value = resource.aws_instance.aws-ec2-instance-tf-sell.private_ip
+
+
+	[5]: ../../path/modules/create-ec2-instance/main.tf:298
+
+		297: # Capture ec2 instance id in output variable
+		298: output "ec2_id" {
+		299:   value = resource.aws_instance.aws-ec2-instance-tf-sell.id
+
+
+	[6]: ../../path/main.tf:426
+
+		425: # Display OVH Public IP Address allocated to instance
+		426: output "ovh_public_ip" {
+		427:   value = module.create-ovh-instance.ovh_instance_ip
+
+
+	[7]: ../../path/modules/create-ec2-instance/main.tf:303
+
+		302: # Capture public ip in output variable
+		303: output "public_ip" {
+		304:   value = resource.aws_instance.aws-ec2-instance-tf-sell.public_ip
+
+
+	[8]: ../../path/modules/deploy-vpn-connection/output.tf:28
+
+		027: # Capture tunnel2 adress
+		028: output "tunnel2_address" {
+		029:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel2_address
+
+
+	[9]: ../../path/modules/create-ec2-instance/output.tf:1
+
+		001: output "aws_ec2_instance_public_ip" {
+		002:   value = resource.aws_instance.aws-ec2-instance-tf-sell.public_ip
+		003: }
+
+
+	[10]: ../../path/modules/deploy-vpn-connection/output.tf:54
+
+		053: # Capture VPN ID
+		054: output "aws_vpn_connection_id" {
+		055:     value = aws_vpn_connection.aws-vpnco-tf-sell.id
+
+
+	[11]: ../../path/modules/deploy-vpn-connection/output.tf:33
+
+		032: # Capture tunnel2 cgw inside adress
+		033: output "tunnel2_cgw_inside_address" {
+		034:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel2_cgw_inside_address
+
+
+	[12]: ../../path/modules/deploy-vpn-connection/output.tf:2
+
+		001: # Capture tunnel1 adress
+		002: output "tunnel1_address" {
+		003:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel1_address
+
+
+	[13]: ../../path/main.tf:431
+
+		430: # Display AWS Public IP Address allocated to instance
+		431: output "aws_public_ip" {
+		432:   value = module.create-ec2-instance.aws_ec2_instance_public_ip
+
+
+	[14]: ../../path/main.tf:436
+
+		435: # Display link to website
+		436: output "aws_link" {
+		437:   value = "https://${var.pod}.${var.aws_dns_zone}"
+
+
+	[15]: ../../path/modules/deploy-vpn-connection/output.tf:12
+
+		011: # Capture 
+		012: output "tunnel1_inside_cidr" {
+		013:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel1_inside_cidr 
+
+
+	[16]: ../../path/modules/deploy-vpn-connection/output.tf:38
+
+		037: # Capture tunnel2 inside cidr
+		038: output "tunnel2_inside_cidr" {
+		039:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel2_inside_cidr 
+
+
+	[17]: ../../path/modules/create-ovh-instance/output.tf:1
+
+		001: output "ovh_instance_ip" {
+		002:   value = openstack_compute_instance_v2.sell_terraform_instance.network[0].fixed_ip_v4
+		003: }
+
+
+	[18]: ../../path/modules/deploy-vpn-connection/output.tf:49
+
+		048: # Capture tunnel2 vgw inside adress
+		049: output "tunnel2_vgw_inside_address" {
+		050:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel2_vgw_inside_address
+
+
+	[19]: ../../path/modules/deploy-vpn-connection/output.tf:23
+
+		022: # Capture tunnel1 vgw inside adress
+		023: output "tunnel1_vgw_inside_address" {
+		024:     value = aws_vpn_connection.aws-vpnco-tf-sell.tunnel1_vgw_inside_address
+
+
+Name Is Not Snake Case, Severity: INFO, Results: 25
+Description: All names should follow snake case pattern.
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/common/1e434b25-8763-4b00-a5ca-ca03b7abbb66
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:173
+
+		172: # Create a security group for https
+		173: resource "aws_security_group" "aws-sg-https-tf-sell" {
+		174:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[2]: ../../path/modules/create-ec2-instance/main.tf:118
+
+		117: # Create a security group for icmp
+		118: resource "aws_security_group" "aws-sg-icmp-tf-sell" {
+		119:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[3]: ../../path/modules/create-ec2-instance/main.tf:91
+
+		090: # Create a security group for RDP
+		091: resource "aws_security_group" "aws-sg-rdp-tf-sell" {
+		092:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[4]: ../../path/main.tf:7
+
+		006: ###############################################################################
+		007: module "create-ovh-instance" {
+		008:     source = "./modules/create-ovh-instance"
+
+
+	[5]: ../../path/modules/deploy-vpn-connection/main.tf:79
+
+		078: # Create a local file to pass data to ansible
+		079: resource "local_file" "ansible_vars_tf-sell" {
+		080:   content = <<-DOC
+
+
+	[6]: ../../path/modules/create-ec2-instance/main.tf:241
+
+		240: # Create a EC2 instance 
+		241: resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242:   
+
+
+	[7]: ../../path/modules/deploy-vpn-connection/main.tf:20
+
+		019: # Create a VPN gateway
+		020: resource "aws_vpn_gateway" "aws-vpngw-tf-sell" {
+		021:   vpc_id = data.aws_vpc.awsvpc-mssssell-tf.id
+
+
+	[8]: ../../path/main.tf:22
+
+		021: ###############################################################################
+		022: module "create-ec2-instance" {
+		023:     source = "./modules/create-ec2-instance"
+
+
+	[9]: ../../path/modules/create-ec2-instance/main.tf:63
+
+		062: # Create a security group for ssh
+		063: resource "aws_security_group" "aws-sg-ssh-tf-sell" {
+		064:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[10]: ../../path/modules/deploy-vpn-connection/main.tf:65
+
+		064: # Create public route table ???
+		065: resource "aws_route_table" "aws-public-routetable-tovgw-tf-sell" {
+		066:   vpc_id     = data.aws_vpc.awsvpc-mssssell-tf.id
+
+
+	[11]: ../../path/modules/create-ec2-instance/main.tf:24
+
+		023: # Create subnet 2 private
+		024: resource "aws_subnet" "aws-private-subnet-tf-sell" {
+		025:   vpc_id     = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[12]: ../../path/modules/create-ec2-instance/main.tf:145
+
+		144: # Create a security group for http
+		145: resource "aws_security_group" "aws-sg-http-tf-sell" {
+		146:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[13]: ../../path/modules/create-ec2-instance/main.tf:34
+
+		033: # Create an internet gateway
+		034: resource "aws_internet_gateway" "aws-igw-tf-sell" {
+		035:   vpc_id     = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[14]: ../../path/modules/create-ec2-instance/main.tf:57
+
+		056: # Create route table association with subnet
+		057: resource "aws_route_table_association" "aws-rtasso-tf-sell-wsub" {
+		058:   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+
+
+	[15]: ../../path/modules/create-ec2-instance/main.tf:4
+
+		003: # Create vpc resource 
+		004: resource "aws_vpc" "awsvpc-tf-sell" {
+		005:   cidr_block = var.aws_cidr_vpc
+
+
+	[16]: ../../path/modules/deploy-vpn-connection/main.tf:53
+
+		052: # Create a VPN connection route
+		053: resource "aws_vpn_connection_route" "aws-vpnco-route-tf-sell" {
+		054:   destination_cidr_block = var.aws_vpn_connection_destination
+
+
+	[17]: ../../path/main.tf:115
+
+		114: # Deploy a VPN connection
+		115: module "deploy-vpn-connection" {
+		116:     source = "./modules/deploy-vpn-connection"
+
+
+	[18]: ../../path/modules/create-ec2-instance/main.tf:201
+
+		200: # Create a RSA key pair 4096 bits 
+		201: resource "tls_private_key" "aws-keypair-rsa-tf-sell" {
+		202:   algorithm = var.aws_algorithm_name
+
+
+	[19]: ../../path/modules/deploy-vpn-connection/main.tf:59
+
+		058: # Create a VPN route propagation
+		059: resource "aws_vpn_gateway_route_propagation" "aws-vpngw-routepropa-tf-sell" {
+		060:   vpn_gateway_id = aws_vpn_gateway.aws-vpngw-tf-sell.id
+
+
+	[20]: ../../path/modules/create-ec2-instance/main.tf:207
+
+		206: # Create a local file to save the private key
+		207: resource "local_file" "aws-private-key-file-tf-sell" {
+		208:   content = resource.tls_private_key.aws-keypair-rsa-tf-sell.private_key_pem
+
+
+	[21]: ../../path/modules/create-ec2-instance/main.tf:43
+
+		042: # Create public route table
+		043: resource "aws_route_table" "aws-public-routetable-tf-sell" {
+		044:   vpc_id     = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[22]: ../../path/modules/deploy-vpn-connection/main.tf:29
+
+		028: # Create a customer gateway
+		029: resource "aws_customer_gateway" "aws-customergw-tf-sell" {
+		030:   bgp_asn    = var.aws_customer_gateway_asn
+
+
+	[23]: ../../path/modules/create-ec2-instance/main.tf:14
+
+		013: # Create subnet 1 public
+		014: resource "aws_subnet" "aws-public-subnet-tf-sell" {
+		015:   vpc_id     = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+	[24]: ../../path/modules/create-ec2-instance/main.tf:214
+
+		213: # Create a aws key pair
+		214: resource "aws_key_pair" "aws-public-key-tf-sell" {
+		215:   key_name = "${var.aws_pod}${var.ssh_aws_key_name_sufx}"
+
+
+	[25]: ../../path/modules/deploy-vpn-connection/main.tf:40
+
+		039: # Create a VPN connection
+		040: resource "aws_vpn_connection" "aws-vpnco-tf-sell" {
+		041:   vpn_gateway_id      = resource.aws_vpn_gateway.aws-vpngw-tf-sell.id
+
+
+EC2 Not EBS Optimized, Severity: INFO, Results: 1
+Description: It's considered a best practice for an EC2 instance to use an EBS optimized instance. This provides the best performance for your EBS volumes by minimizing contention between Amazon EBS I/O and other traffic from your instance
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/60224630-175a-472a-9e23-133827040766
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:241
+
+		240: # Create a EC2 instance 
+		241: resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242:   
+
+
+EC2 Instance Monitoring Disabled, Severity: INFO, Results: 1
+Description: EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/23b70e32-032e-4fa6-ba5c-82f56b9980e6
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:241
+
+		240: # Create a EC2 instance 
+		241: resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242:   
+
+
+VPC FlowLogs Disabled, Severity: LOW, Results: 1
+Description: Every VPC resource should have an associated Flow Log
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/f83121ea-03da-434f-9277-9cd247ab3047
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:4
+
+		003: # Create vpc resource 
+		004: resource "aws_vpc" "awsvpc-tf-sell" {
+		005:   cidr_block = var.aws_cidr_vpc
+
+
+IAM Access Analyzer Not Enabled, Severity: LOW, Results: 1
+Description: IAM Access Analyzer should be enabled and configured to continuously monitor resource permissions
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/e592a0c5-5bdb-414c-9066-5dba7cdea370
+
+	[1]: ../../path/main.tf:59
+
+		058: # Generate config file
+		059: resource "local_file" "aws_ansible_nginx_config_file" {
+		060:   filename = "${var.ansible_nginx_config_file}"
+
+
+VPC Without Network Firewall, Severity: MEDIUM, Results: 1
+Description: VPC should have a Network Firewall associated
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/fd632aaf-b8a1-424d-a4d1-0de22fd3247a
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:4
+
+		003: # Create vpc resource 
+		004: resource "aws_vpc" "awsvpc-tf-sell" {
+		005:   cidr_block = var.aws_cidr_vpc
+
+
+Unrestricted Security Group Ingress, Severity: HIGH, Results: 5
+Description: Security groups allow ingress from 0.0.0.0:0 and/or ::/0
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/4728cd65-a20c-49da-8b31-9c08b423e4db
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:128
+
+		127:     protocol    = "icmp"
+		128:     cidr_blocks = ["0.0.0.0/0"]
+		129:   }
+
+
+	[2]: ../../path/modules/create-ec2-instance/main.tf:101
+
+		100:     protocol    = "tcp"
+		101:     cidr_blocks = ["0.0.0.0/0"]
+		102:   }
+
+
+	[3]: ../../path/modules/create-ec2-instance/main.tf:74
+
+		073:     #cidr_blocks = [data.aws_vpc.awsvpc-tf-sel.cidr_block]
+		074:     cidr_blocks = ["0.0.0.0/0"]
+		075:   }
+
+
+	[4]: ../../path/modules/create-ec2-instance/main.tf:156
+
+		155:     #cidr_blocks = [data.aws_vpc.awsvpc-tf-sel.cidr_block]
+		156:     cidr_blocks = ["0.0.0.0/0"]
+		157:   }
+
+
+	[5]: ../../path/modules/create-ec2-instance/main.tf:184
+
+		183:     #cidr_blocks = [data.aws_vpc.awsvpc-tf-sel.cidr_block]
+		184:     cidr_blocks = ["0.0.0.0/0"]
+		185:   }
+
+
+Unknown Port Exposed To Internet, Severity: HIGH, Results: 1
+Description: AWS Security Group should not have an unknown port exposed to the entire Internet
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/590d878b-abdc-428f-895a-e2b68a0e1998
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:128
+
+		127:     protocol    = "icmp"
+		128:     cidr_blocks = ["0.0.0.0/0"]
+		129:   }
+
+
+Sensitive Port Is Exposed To Entire Network, Severity: HIGH, Results: 4
+Description: A sensitive port, such as port 23 or port 110, is open for the whole network in either TCP or UDP protocol
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/381c3f2a-ef6f-4eff-99f7-b169cda3422c
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:150
+
+		149: 
+		150:   ingress {
+		151:     description = "http for ipv4"
+
+
+	[2]: ../../path/modules/create-ec2-instance/main.tf:96
+
+		095: 
+		096:   ingress {
+		097:     description = "rdp for all"
+
+
+	[3]: ../../path/modules/create-ec2-instance/main.tf:68
+
+		067: 
+		068:   ingress {
+		069:     description = "ssh for ipv4"
+
+
+	[4]: ../../path/modules/create-ec2-instance/main.tf:178
+
+		177: 
+		178:   ingress {
+		179:     description = "https for ipv4"
+
+
+Security Group With Unrestricted Access To SSH, Severity: HIGH, Results: 1
+Description: 'SSH' (TCP:22) should not be public in AWS Security Group
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/65905cec-d691-4320-b320-2000436cb696
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:74
+
+		073:     #cidr_blocks = [data.aws_vpc.awsvpc-tf-sel.cidr_block]
+		074:     cidr_blocks = ["0.0.0.0/0"]
+		075:   }
+
+
+Remote Desktop Port Open To Internet, Severity: HIGH, Results: 1
+Description: The Remote Desktop port is open to the internet in a Security Group
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/151187cb-0efc-481c-babd-ad24e3c9bc22
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:91
+
+		090: # Create a security group for RDP
+		091: resource "aws_security_group" "aws-sg-rdp-tf-sell" {
+		092:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+HTTP Port Open To Internet, Severity: HIGH, Results: 1
+Description: The HTTP port is open to the internet in a Security Group
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/ffac8a12-322e-42c1-b9b9-81ff85c39ef7
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:145
+
+		144: # Create a security group for http
+		145: resource "aws_security_group" "aws-sg-http-tf-sell" {
+		146:   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+
+
+EC2 Instance Has Public IP, Severity: HIGH, Results: 1
+Description: EC2 Instance should not have a public IP address.
+Platform: Terraform
+Learn more about this vulnerability: https://docs.kics.io/latest/queries/terraform-queries/aws/5a2486aa-facf-477d-a5c1-b010789459ce
+
+	[1]: ../../path/modules/create-ec2-instance/main.tf:255
+
+		254: 
+		255:   associate_public_ip_address = true
+		256: 
+
+
+
+Results Summary:
+HIGH: 14
+MEDIUM: 1
+LOW: 2
+INFO: 175
+TOTAL: 192
+
+Results saved to file /path/results.json
+Generating Reports: Done                                                                                                                                                                                                                                                           
+Scan duration: 5m37.39618766s
+ubuntu@Ubuntu-22:~/MSSS/work/TESTFINALPROJECT/mss-self-project$ 

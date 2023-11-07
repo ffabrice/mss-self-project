@@ -1,0 +1,38 @@
+---                                         # Conventionally YAML file starts with '---'
+- name: check installed configuration       # Descriptive play name
+  gather_facts: yes                         # Gather `facts` on the target host and store them in `ansible_facts` variable
+  hosts: ovhservers,awsservers                         # Target managed hosts, tasks will run on/toward. 
+  vars_files:
+    - "vars/variables.yml"
+
+  tasks:                                    # List of tasks for the play
+  - name: ping ovh loopback from aws
+    ansible.builtin.shell:                    # Module name 
+      cmd: ping -4 -c 5 {{ ovh_loopback_ip }}
+    register: ping1
+    delegate_to: nginx
+  
+  - name: debug1
+    ansible.builtin.debug:
+      msg: ping1 {{ ping1.stdout }} 
+  
+  - name: ping ec2 from ovh loopback        # Name of the task
+    ansible.builtin.shell:                    # Module name 
+      cmd: ping -4 -c 5 -I {{ ovh_loopback_ip }} {{ aws_private_ip }}
+    register: ping2
+    delegate_to: strongswan
+
+  - name: debug2
+    ansible.builtin.debug:
+      msg: ping2 {{ ping2.stdout }} 
+
+  - name: get website with curl
+    ansible.builtin.shell:                    # Module name 
+      cmd: curl --interface {{ ovh_loopback_ip }} http://{{ aws_private_ip }}
+    register: curl1
+    delegate_to: strongswan
+ 
+  - name: debug3
+    ansible.builtin.debug:
+      msg: curl1 {{ curl1.stdout }} 
+

@@ -1,0 +1,326 @@
+ubuntu@Ubuntu-22:~/MSSS/work/TESTFINALPROJECT/mss-self-project$ tfsec
+
+======================================================
+tfsec is joining the Trivy family
+
+tfsec will continue to remain available 
+for the time being, although our engineering 
+attention will be directed at Trivy going forward.
+
+You can read more here: 
+https://github.com/aquasecurity/tfsec/discussions/1994
+======================================================
+WARNING: A tfvars file was found but not automatically used. Did you mean to specify the --tfvars-file flag?
+
+Result #1 CRITICAL Security group rule allows ingress from public internet. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:101
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   91    resource "aws_security_group" "aws-sg-rdp-tf-sell" {
+   ..  
+  101  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  115    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-ingress-sgr
+      Impact Your port exposed to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-ingress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule#cidr_blocks
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #2 CRITICAL Security group rule allows egress to multiple public internet addresses. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:109
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   91    resource "aws_security_group" "aws-sg-rdp-tf-sell" {
+   ..  
+  109  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  115    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-egress-sgr
+      Impact Your port is egressing data to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-egress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #3 CRITICAL Security group rule allows ingress from public internet. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:128
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  118    resource "aws_security_group" "aws-sg-icmp-tf-sell" {
+  ...  
+  128  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  142    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-ingress-sgr
+      Impact Your port exposed to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-ingress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule#cidr_blocks
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #4 CRITICAL Security group rule allows egress to multiple public internet addresses. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:136
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  118    resource "aws_security_group" "aws-sg-icmp-tf-sell" {
+  ...  
+  136  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  142    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-egress-sgr
+      Impact Your port is egressing data to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-egress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #5 CRITICAL Security group rule allows ingress from public internet. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:156
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  145    resource "aws_security_group" "aws-sg-http-tf-sell" {
+  ...  
+  156  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  170    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-ingress-sgr
+      Impact Your port exposed to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-ingress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule#cidr_blocks
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #6 CRITICAL Security group rule allows egress to multiple public internet addresses. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:164
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  145    resource "aws_security_group" "aws-sg-http-tf-sell" {
+  ...  
+  164  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  170    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-egress-sgr
+      Impact Your port is egressing data to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-egress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #7 CRITICAL Security group rule allows ingress from public internet. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:184
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  173    resource "aws_security_group" "aws-sg-https-tf-sell" {
+  ...  
+  184  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  198    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-ingress-sgr
+      Impact Your port exposed to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-ingress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule#cidr_blocks
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #8 CRITICAL Security group rule allows egress to multiple public internet addresses. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:192
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  173    resource "aws_security_group" "aws-sg-https-tf-sell" {
+  ...  
+  192  [     cidr_blocks = ["0.0.0.0/0"]
+  ...  
+  198    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-egress-sgr
+      Impact Your port is egressing data to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-egress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #9 CRITICAL Security group rule allows ingress from public internet. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:74
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   63    resource "aws_security_group" "aws-sg-ssh-tf-sell" {
+   ..  
+   74  [     cidr_blocks = ["0.0.0.0/0"]
+   ..  
+   88    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-ingress-sgr
+      Impact Your port exposed to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-ingress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule#cidr_blocks
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #10 CRITICAL Security group rule allows egress to multiple public internet addresses. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:82
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   63    resource "aws_security_group" "aws-sg-ssh-tf-sell" {
+   ..  
+   82  [     cidr_blocks = ["0.0.0.0/0"]
+   ..  
+   88    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-no-public-egress-sgr
+      Impact Your port is egressing data to the internet
+  Resolution Set a more restrictive cidr range
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/no-public-egress-sgr/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #11 HIGH Instance does not require IMDS access to require a token 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:241-262
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  241  ┌ resource "aws_instance" "aws-ec2-instance-tf-sell" {
+  242  │   
+  243  │   ami = data.aws_ami.ubuntu.id
+  244  │   instance_type = var.aws_ec2_instance_type
+  245  │ 
+  246  │   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+  247  │   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+  248  │                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+  249  └                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+  ...  
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-enforce-http-token-imds
+      Impact Instance metadata service can be interacted with freely
+  Resolution Enable HTTP token requirement for IMDS
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/enforce-http-token-imds/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#metadata-options
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #12 HIGH Root block device is not encrypted. 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:241-262
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  241  ┌ resource "aws_instance" "aws-ec2-instance-tf-sell" {
+  242  │   
+  243  │   ami = data.aws_ami.ubuntu.id
+  244  │   instance_type = var.aws_ec2_instance_type
+  245  │ 
+  246  │   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+  247  │   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+  248  │                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+  249  └                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+  ...  
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-enable-at-rest-encryption
+      Impact The block device could be compromised and read from
+  Resolution Turn on encryption for all block devices
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/enable-at-rest-encryption/
+  - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#ebs-ephemeral-and-root-block-devices
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+Result #13 MEDIUM VPC Flow Logs is not enabled for VPC  
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  modules/create-ec2-instance/main.tf:4-11
+   via main.tf:22-52 (module.create-ec2-instance)
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    4    resource "aws_vpc" "awsvpc-tf-sell" {
+    5      cidr_block = var.aws_cidr_vpc
+    6      
+    7      tags = {
+    8        Name = "${var.aws_pod}-${var.aws_vpc_sufx}"
+    9      }
+   10      
+   11    }
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+          ID aws-ec2-require-vpc-flow-logs-for-all-vpcs
+      Impact Without VPC flow logs, you risk not having enough information about network traffic flow to investigate incidents or identify security issues.
+  Resolution Enable flow logs for VPC
+
+  More Information
+  - https://aquasecurity.github.io/tfsec/v1.28.4/checks/aws/ec2/require-vpc-flow-logs-for-all-vpcs/
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  timings
+  ──────────────────────────────────────────
+  disk i/o             154.001µs
+  parsing              12.463999ms
+  adaptation           5.868993ms
+  checks               5.039651ms
+  total                23.526644ms
+
+  counts
+  ──────────────────────────────────────────
+  modules downloaded   0
+  modules processed    4
+  blocks processed     189
+  files read           14
+
+  results
+  ──────────────────────────────────────────
+  passed               19
+  ignored              0
+  critical             10
+  high                 2
+  medium               1
+  low                  0
+
+  19 passed, 13 potential problem(s) detected.
+
+ubuntu@Ubuntu-22:~/MSSS/work/TESTFINALPROJECT/mss-self-project$ 

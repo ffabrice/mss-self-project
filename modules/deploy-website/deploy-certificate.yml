@@ -1,0 +1,34 @@
+---
+- name: Activate SSL certificate
+  gather_facts: yes                         
+  hosts: webservers
+  become: true
+
+  vars_files:
+    - vars/generic.yml
+
+  tasks:  
+  - name: install certbot
+    community.general.snap:
+      name:
+        - certbot
+      classic: true
+  
+  - name: set certbot privilege
+    ansible.builtin.command: snap set certbot trust-plugin-with-root=ok
+
+  - name: install certbot addons
+    community.general.snap:
+      name:
+        - certbot-dns-route53
+      classic: true
+
+  - name: issue certificate
+    ansible.builtin.command: certbot --non-interactive --redirect --agree-tos --nginx -d {{domain}} -m devops@intuitivesoft.cloud  
+    notify: restart nginx
+  
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted

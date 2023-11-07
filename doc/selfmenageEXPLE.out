@@ -1,0 +1,1222 @@
+ubuntu@Ubuntu-22:~/MSSS/work/TESTFINALPROJECT10/mss-self-project$ ./menage.sh 
+---------------------------------------
+------ Welcome to VPN Automation ------
+---------------------------------------
+
+*** check conf ...
+*** is aws cli installed ? 
+aws-cli/2.13.24 Python/3.11.5 Linux/6.2.0-36-generic exe/x86_64.ubuntu.22 prompt/off
+*** is Terraform installed ? 
+Terraform v1.6.0
+on linux_amd64
++ provider registry.terraform.io/hashicorp/aws v5.24.0
++ provider registry.terraform.io/hashicorp/local v2.4.0
++ provider registry.terraform.io/hashicorp/null v3.2.1
++ provider registry.terraform.io/hashicorp/tls v4.0.4
++ provider registry.terraform.io/terraform-provider-openstack/openstack v1.42.0
+
+Your version of Terraform is out of date! The latest version
+is 1.6.3. You can update by downloading from https://www.terraform.io/downloads.html
+*** is python installed ? 
+Python 3.10.12
+*** is Ansible installed ? 
+ansible [core 2.15.4]
+  config file = None
+  configured module search path = ['/home/ubuntu/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/ubuntu/.local/pipx/venvs/ansible-core/lib/python3.10/site-packages/ansible
+  ansible collection location = /home/ubuntu/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/ubuntu/.local/bin/ansible
+  python version = 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] (/home/ubuntu/.local/pipx/venvs/ansible-core/bin/python)
+  jinja version = 3.1.2
+  libyaml = True
+
+*** check credentials ...
+*** on aws side :
+{
+    "UserId": "...",
+    "Account": "708113109960",
+    "Arn": "arn:aws:sts::708113109960:assumed-role/AWSReservedSSO_DevopsLab_a5ad8dc258100c..."
+}
+*** on ovh side :
+https://auth.cloud.ovh.net/v3
+user-rj8rP3ysvdp3
+GRA7
+
+So, 
+Would you like to continue ? Only 'yes' will be accepted to confirm
+yes
+ok, let s go
+
+Initializing the backend...
+Initializing modules...
+
+Initializing provider plugins...
+- terraform.io/builtin/terraform is built in to Terraform
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Reusing previous version of terraform-provider-openstack/openstack from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Reusing previous version of hashicorp/local from the dependency lock file
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/null v3.2.1
+- Using previously-installed hashicorp/local v2.4.0
+- Using previously-installed hashicorp/aws v5.24.0
+- Using previously-installed hashicorp/tls v4.0.4
+- Using previously-installed terraform-provider-openstack/openstack v1.42.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+local_file.aws_ansible_nginx_config_file: Refreshing state... [id=0f1737acc32f17be2554840d56c09cf26d4f74ea]
+module.create-ec2-instance.tls_private_key.aws-keypair-rsa-tf-sell: Refreshing state... [id=007e4f6112965cc90f52229636a719508ac06e0c]
+local_file.aws_ansible_website_generic_file: Refreshing state... [id=7872974a5bf453216a4bc18986d45de0cd675d38]
+local_file.ovh_ansible_config_file: Refreshing state... [id=0f1737acc32f17be2554840d56c09cf26d4f74ea]
+local_file.aws_ansible_website_config_file: Refreshing state... [id=0f1737acc32f17be2554840d56c09cf26d4f74ea]
+module.create-ovh-instance.openstack_compute_keypair_v2.self_keypair: Refreshing state... [id=TESTselfmsssULTIME_ovh_keypair]
+module.create-ec2-instance.local_file.aws-private-key-file-tf-sell: Refreshing state... [id=f0cdcdbf48c57b058be9b49edb26d9e359555e0d]
+module.create-ec2-instance.aws_key_pair.aws-public-key-tf-sell: Refreshing state... [id=TESTselfmsssULTIME_aws_keypair]
+module.create-ec2-instance.data.aws_route53_zone.selected: Reading...
+module.create-ec2-instance.data.aws_ami.ubuntu: Reading...
+module.create-ec2-instance.aws_vpc.awsvpc-tf-sell: Refreshing state... [id=vpc-012e09f8d3340842e]
+module.create-ovh-instance.local_file.privatekey_filename: Refreshing state... [id=470dce06f09a94a15586925e1079770b1ac352f6]
+module.create-ovh-instance.openstack_compute_instance_v2.sell_terraform_instance: Refreshing state... [id=538ddfbb-f509-42ec-9044-adf3f8f91a55]
+module.create-ec2-instance.data.aws_ami.ubuntu: Read complete after 0s [id=ami-073e5edf4b5d15fc8]
+module.create-ec2-instance.data.aws_route53_zone.selected: Read complete after 0s [id=Z03385262WMCAFO2KASN1]
+module.create-ec2-instance.aws_security_group.aws-sg-http-tf-sell: Refreshing state... [id=sg-0a81d5e0b2d5fb189]
+module.create-ec2-instance.aws_security_group.aws-sg-ssh-tf-sell: Refreshing state... [id=sg-0b3dad0ce6b294e34]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Refreshing state... [id=igw-00b643f6527a3017d]
+module.create-ec2-instance.aws_security_group.aws-sg-https-tf-sell: Refreshing state... [id=sg-08a8be229d055f86d]
+module.create-ec2-instance.aws_subnet.aws-private-subnet-tf-sell: Refreshing state... [id=subnet-05f79dab467550e3b]
+module.create-ec2-instance.aws_security_group.aws-sg-rdp-tf-sell: Refreshing state... [id=sg-0b82c5bd25fea3fe5]
+module.create-ec2-instance.aws_subnet.aws-public-subnet-tf-sell: Refreshing state... [id=subnet-0e3dd61c3c51ee76a]
+module.create-ec2-instance.aws_security_group.aws-sg-icmp-tf-sell: Refreshing state... [id=sg-0b220068aea7d6475]
+module.create-ec2-instance.aws_route_table.aws-public-routetable-tf-sell: Refreshing state... [id=rtb-07223d4403f9d3743]
+module.create-ec2-instance.aws_route_table_association.aws-rtasso-tf-sell-wsub: Refreshing state... [id=rtbassoc-01c90ee6a9941726e]
+module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell: Refreshing state... [id=i-04bd7a40becc77f20]
+module.create-ec2-instance.terraform_data.instance_role: Refreshing state... [id=ab509e46-db10-61c6-3ea7-9bb5d78383fc]
+local_file.aws_ansible_nginx_inventory_file: Refreshing state... [id=747ee582055fcc91aa0dfa63c582efbe46154373]
+module.create-ec2-instance.aws_route53_record.www: Refreshing state... [id=Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A]
+local_file.aws_ansible_website_inventory_file: Refreshing state... [id=747ee582055fcc91aa0dfa63c582efbe46154373]
+local_file.ansible_check_vars_file: Refreshing state... [id=5a5fab6ebd83e00ad7e33b8eb843cdfa064d7be5]
+local_file.ansible_check_inventory_file: Refreshing state... [id=c31cbf4899d7fcb7e4b63d7e149312af9dcc513f]
+local_file.ovh_ansible_inventory_file: Refreshing state... [id=df37d8148f3c11782307436f89b4302753f87e48]
+null_resource.aws_ansible_nginx_playbook: Refreshing state... [id=6393710102456844675]
+module.deploy-vpn-connection.data.aws_vpc.awsvpc-mssssell-tf: Reading...
+module.deploy-vpn-connection.data.aws_route_table.awsrt-mssssell-tf: Reading...
+module.deploy-vpn-connection.aws_customer_gateway.aws-customergw-tf-sell: Refreshing state... [id=cgw-08b95770944b6e891]
+null_resource.aws_ansible_vhost_playbook: Refreshing state... [id=1668525657954860137]
+null_resource.aws_ansible_website_playbook: Refreshing state... [id=459187432442292230]
+null_resource.aws_ansible_certificate_playbook: Refreshing state... [id=1526997868748340203]
+module.deploy-vpn-connection.data.aws_route_table.awsrt-mssssell-tf: Read complete after 0s [id=rtb-07223d4403f9d3743]
+module.deploy-vpn-connection.data.aws_vpc.awsvpc-mssssell-tf: Read complete after 1s [id=vpc-012e09f8d3340842e]
+module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell: Refreshing state... [id=vgw-02945973cdf03e98a]
+module.deploy-vpn-connection.aws_route_table.aws-public-routetable-tovgw-tf-sell: Refreshing state... [id=rtb-02d20913ace8c0656]
+module.deploy-vpn-connection.aws_vpn_gateway_route_propagation.aws-vpngw-routepropa-tf-sell: Refreshing state... [id=vgw-02945973cdf03e98a_rtb-07223d4403f9d3743]
+module.deploy-vpn-connection.aws_vpn_connection.aws-vpnco-tf-sell: Refreshing state... [id=vpn-09afb488a9dffe38b]
+module.deploy-vpn-connection.local_file.ansible_vars_tf-sell: Refreshing state... [id=6e3b58187fbc1205e9d3d2fea4c161cf83c30c00]
+module.deploy-vpn-connection.aws_vpn_connection_route.aws-vpnco-route-tf-sell: Refreshing state... [id=10.10.1.0/24:vpn-09afb488a9dffe38b]
+null_resource.ovh_strongswan_playbook: Refreshing state... [id=7653454619871566427]
+null_resource.check_tunnels_up: Refreshing state... [id=299270272359642763]
+null_resource.check_conf: Refreshing state... [id=4964770775099574848]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # local_file.ansible_check_inventory_file will be destroyed
+  - resource "local_file" "ansible_check_inventory_file" {
+      - content              = <<-EOT
+            [ovhservers]
+            strongswan ansible_host=162.19.119.230
+            
+            [ovhservers:vars]
+            ansible_ssh_private_key_file="./.ssh/self_ovh_keypair_rsa.pem"
+            
+            [awsservers]
+            nginx ansible_host=18.225.57.95
+            
+            [awsservers:vars]
+            ansible_ssh_private_key_file="./.ssh/self_aws_keypair_rsa.pem"
+            
+            [all:vars]
+            ssh_common_args='-o StrictHostKeyChecking=no'
+            ansible_user=ubuntu
+        EOT -> null
+      - content_base64sha256 = "mmYO/I3h6xtVRAsCCgPnIRZmHbuXARhwbsppRJrSbC4=" -> null
+      - content_base64sha512 = "LyzHFNEEzBjRYcZgbCEDoWqafHJQ3OMiQjsIWzSHgo98IaumXPAgw1aBgosVUgmZCDKE5PiHXPP3+bs80dTujQ==" -> null
+      - content_md5          = "28f00078fb78f38e950cf5db7bb38342" -> null
+      - content_sha1         = "c31cbf4899d7fcb7e4b63d7e149312af9dcc513f" -> null
+      - content_sha256       = "9a660efc8de1eb1b55440b020a03e72116661dbb970118706eca69449ad26c2e" -> null
+      - content_sha512       = "2f2cc714d104cc18d161c6606c2103a16a9a7c7250dce322423b085b3487828f7c21aba65cf020c35681828b15520999083284e4f8875cf3f7f9bb3cd1d4ee8d" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/check-conf/inventory.ini" -> null
+      - id                   = "c31cbf4899d7fcb7e4b63d7e149312af9dcc513f" -> null
+    }
+
+  # local_file.ansible_check_vars_file will be destroyed
+  - resource "local_file" "ansible_check_vars_file" {
+      - content              = <<-EOT
+            # Ansible vars_file containing variable values from Terraform.
+            # Generated by Terraform mgmt configuration.
+            ovh_loopback_ip: 10.10.1.252
+            aws_private_ip: 10.1.1.133
+        EOT -> null
+      - content_base64sha256 = "01CMJfjWGPjwHbd3PUgKhc/DxOdEndEdfYGpFHxgtCY=" -> null
+      - content_base64sha512 = "VSrtWYBafLRFhrSW5XPRMvft8acYKYGDJ0Ehwv/EOblMFIzML6fjpsQlk/tH3DzinX61W6a5xQz3NR+g1NkTbw==" -> null
+      - content_md5          = "bd9a18017fd988be87ca8bc8b2b7219f" -> null
+      - content_sha1         = "5a5fab6ebd83e00ad7e33b8eb843cdfa064d7be5" -> null
+      - content_sha256       = "d3508c25f8d618f8f01db7773d480a85cfc3c4e7449dd11d7d81a9147c60b426" -> null
+      - content_sha512       = "552aed59805a7cb44586b496e573d132f7edf1a718298183274121c2ffc439b94c148ccc2fa7e3a6c42593fb47dc3ce29d7eb55ba6b9c50cf7351fa0d4d9136f" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/check-conf/vars/variables.yml" -> null
+      - id                   = "5a5fab6ebd83e00ad7e33b8eb843cdfa064d7be5" -> null
+    }
+
+  # local_file.aws_ansible_nginx_config_file will be destroyed
+  - resource "local_file" "aws_ansible_nginx_config_file" {
+      - content              = <<-EOT
+            [defaults]
+            host_key_checking = False
+        EOT -> null
+      - content_base64sha256 = "gMRKoNJaciLyOLS4oTfrHm9x10M88te/qIk+j5ACeko=" -> null
+      - content_base64sha512 = "UQixr3wN9C90I0oa44OgJrPyVq+0qyLiL/+7NPUyIrYvtRFidGPLpOOj8zSYW9uQiFfYK53DGYqINcEQd0lNjQ==" -> null
+      - content_md5          = "1d2b74abf42837f41ecc5f1c738a6fbd" -> null
+      - content_sha1         = "0f1737acc32f17be2554840d56c09cf26d4f74ea" -> null
+      - content_sha256       = "80c44aa0d25a7222f238b4b8a137eb1e6f71d7433cf2d7bfa8893e8f90027a4a" -> null
+      - content_sha512       = "5108b1af7c0df42f74234a1ae383a026b3f256afb4ab22e22fffbb34f53222b62fb511627463cba4e3a3f334985bdb908857d82b9dc3198a8835c11077494d8d" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/install-nginx-on-ec2/ansible.cfg" -> null
+      - id                   = "0f1737acc32f17be2554840d56c09cf26d4f74ea" -> null
+    }
+
+  # local_file.aws_ansible_nginx_inventory_file will be destroyed
+  - resource "local_file" "aws_ansible_nginx_inventory_file" {
+      - content              = <<-EOT
+            [webservers]
+            nginx ansible_host=18.225.57.95
+            
+            [webservers:vars]
+            ansible_ssh_private_key_file="./.ssh/self_aws_keypair_rsa.pem"
+            ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+            ansible_user=ubuntu
+        EOT -> null
+      - content_base64sha256 = "Rx7GXOw13BqvkAlN8DQopFM8hj56SLRabIbR1pe8pRI=" -> null
+      - content_base64sha512 = "TcGsTomQwWhHEl+UHMcAnQSHeJQzGJmIZnx2HddKl1FQ5tfwkCi/BCeaZRJVL0BZJJY5mf1BgQZ2UqJg6oNKsg==" -> null
+      - content_md5          = "51a9d4666a5f2a44bf3995c4e54cd1b0" -> null
+      - content_sha1         = "747ee582055fcc91aa0dfa63c582efbe46154373" -> null
+      - content_sha256       = "471ec65cec35dc1aaf90094df03428a4533c863e7a48b45a6c86d1d697bca512" -> null
+      - content_sha512       = "4dc1ac4e8990c16847125f941cc7009d0487789433189988667c761dd74a975150e6d7f09028bf04279a6512552f405924963999fd4181067652a260ea834ab2" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/install-nginx-on-ec2/inventory.ini" -> null
+      - id                   = "747ee582055fcc91aa0dfa63c582efbe46154373" -> null
+    }
+
+  # local_file.aws_ansible_website_config_file will be destroyed
+  - resource "local_file" "aws_ansible_website_config_file" {
+      - content              = <<-EOT
+            [defaults]
+            host_key_checking = False
+        EOT -> null
+      - content_base64sha256 = "gMRKoNJaciLyOLS4oTfrHm9x10M88te/qIk+j5ACeko=" -> null
+      - content_base64sha512 = "UQixr3wN9C90I0oa44OgJrPyVq+0qyLiL/+7NPUyIrYvtRFidGPLpOOj8zSYW9uQiFfYK53DGYqINcEQd0lNjQ==" -> null
+      - content_md5          = "1d2b74abf42837f41ecc5f1c738a6fbd" -> null
+      - content_sha1         = "0f1737acc32f17be2554840d56c09cf26d4f74ea" -> null
+      - content_sha256       = "80c44aa0d25a7222f238b4b8a137eb1e6f71d7433cf2d7bfa8893e8f90027a4a" -> null
+      - content_sha512       = "5108b1af7c0df42f74234a1ae383a026b3f256afb4ab22e22fffbb34f53222b62fb511627463cba4e3a3f334985bdb908857d82b9dc3198a8835c11077494d8d" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/deploy-website/ansible.cfg" -> null
+      - id                   = "0f1737acc32f17be2554840d56c09cf26d4f74ea" -> null
+    }
+
+  # local_file.aws_ansible_website_generic_file will be destroyed
+  - resource "local_file" "aws_ansible_website_generic_file" {
+      - content              = <<-EOT
+            domain: TESTselfmsssULTIME.devops.intuitivesoft.cloud.
+        EOT -> null
+      - content_base64sha256 = "UC5tUIU9yuij2Idf0DQtkbBtFbGDqWFZxeEt/+he36U=" -> null
+      - content_base64sha512 = "1TPbPbTKeRTlk9PelurDxEJijCcK05E1uK9X+p4QodbtWhsRH+Cj3jULBAgPXZLe7sLooDU5nx0XJu2C6I+6PQ==" -> null
+      - content_md5          = "cdad366a2a9569292606df44bd066a1c" -> null
+      - content_sha1         = "7872974a5bf453216a4bc18986d45de0cd675d38" -> null
+      - content_sha256       = "502e6d50853dcae8a3d8875fd0342d91b06d15b183a96159c5e12dffe85edfa5" -> null
+      - content_sha512       = "d533db3db4ca7914e593d3de96eac3c442628c270ad39135b8af57fa9e10a1d6ed5a1b111fe0a3de350b04080f5d92deeec2e8a035399f1d1726ed82e88fba3d" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/deploy-website/vars/generic.yml" -> null
+      - id                   = "7872974a5bf453216a4bc18986d45de0cd675d38" -> null
+    }
+
+  # local_file.aws_ansible_website_inventory_file will be destroyed
+  - resource "local_file" "aws_ansible_website_inventory_file" {
+      - content              = <<-EOT
+            [webservers]
+            nginx ansible_host=18.225.57.95
+            
+            [webservers:vars]
+            ansible_ssh_private_key_file="./.ssh/self_aws_keypair_rsa.pem"
+            ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+            ansible_user=ubuntu
+        EOT -> null
+      - content_base64sha256 = "Rx7GXOw13BqvkAlN8DQopFM8hj56SLRabIbR1pe8pRI=" -> null
+      - content_base64sha512 = "TcGsTomQwWhHEl+UHMcAnQSHeJQzGJmIZnx2HddKl1FQ5tfwkCi/BCeaZRJVL0BZJJY5mf1BgQZ2UqJg6oNKsg==" -> null
+      - content_md5          = "51a9d4666a5f2a44bf3995c4e54cd1b0" -> null
+      - content_sha1         = "747ee582055fcc91aa0dfa63c582efbe46154373" -> null
+      - content_sha256       = "471ec65cec35dc1aaf90094df03428a4533c863e7a48b45a6c86d1d697bca512" -> null
+      - content_sha512       = "4dc1ac4e8990c16847125f941cc7009d0487789433189988667c761dd74a975150e6d7f09028bf04279a6512552f405924963999fd4181067652a260ea834ab2" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/deploy-website/inventory.ini" -> null
+      - id                   = "747ee582055fcc91aa0dfa63c582efbe46154373" -> null
+    }
+
+  # local_file.ovh_ansible_config_file will be destroyed
+  - resource "local_file" "ovh_ansible_config_file" {
+      - content              = <<-EOT
+            [defaults]
+            host_key_checking = False
+        EOT -> null
+      - content_base64sha256 = "gMRKoNJaciLyOLS4oTfrHm9x10M88te/qIk+j5ACeko=" -> null
+      - content_base64sha512 = "UQixr3wN9C90I0oa44OgJrPyVq+0qyLiL/+7NPUyIrYvtRFidGPLpOOj8zSYW9uQiFfYK53DGYqINcEQd0lNjQ==" -> null
+      - content_md5          = "1d2b74abf42837f41ecc5f1c738a6fbd" -> null
+      - content_sha1         = "0f1737acc32f17be2554840d56c09cf26d4f74ea" -> null
+      - content_sha256       = "80c44aa0d25a7222f238b4b8a137eb1e6f71d7433cf2d7bfa8893e8f90027a4a" -> null
+      - content_sha512       = "5108b1af7c0df42f74234a1ae383a026b3f256afb4ab22e22fffbb34f53222b62fb511627463cba4e3a3f334985bdb908857d82b9dc3198a8835c11077494d8d" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/install-strongswan-on-ovh/ansible.cfg" -> null
+      - id                   = "0f1737acc32f17be2554840d56c09cf26d4f74ea" -> null
+    }
+
+  # local_file.ovh_ansible_inventory_file will be destroyed
+  - resource "local_file" "ovh_ansible_inventory_file" {
+      - content              = <<-EOT
+            [webservers]
+            strongswan ansible_host=162.19.119.230
+            
+            [webservers:vars]
+            ansible_ssh_private_key_file="./.ssh/self_ovh_keypair_rsa.pem"
+            ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+            ansible_user=ubuntu
+        EOT -> null
+      - content_base64sha256 = "Pd9xOFAyE7RACKzY93HcBi0HijZtWNGS94QV4J0F/Bw=" -> null
+      - content_base64sha512 = "mef0dLZo1t7ZZ2MCETOFahqrSd4l2Z9ifNLgePy62pMRFvA5AXYvNYP9MLmHs5E16jSLT8C94JsWORrcE9CB6g==" -> null
+      - content_md5          = "2281500a01ddd7e85e06368002db7225" -> null
+      - content_sha1         = "df37d8148f3c11782307436f89b4302753f87e48" -> null
+      - content_sha256       = "3ddf7138503213b44008acd8f771dc062d078a366d58d192f78415e09d05fc1c" -> null
+      - content_sha512       = "99e7f474b668d6ded96763021133856a1aab49de25d99f627cd2e078fcbada931116f03901762f3583fd30b987b39135ea348b4fc0bde09b16391adc13d081ea" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/install-strongswan-on-ovh/inventory.ini" -> null
+      - id                   = "df37d8148f3c11782307436f89b4302753f87e48" -> null
+    }
+
+  # null_resource.aws_ansible_certificate_playbook will be destroyed
+  - resource "null_resource" "aws_ansible_certificate_playbook" {
+      - id       = "1526997868748340203" -> null
+      - triggers = {
+          - "file_changed" = "51a9d4666a5f2a44bf3995c4e54cd1b0"
+        } -> null
+    }
+
+  # null_resource.aws_ansible_nginx_playbook will be destroyed
+  - resource "null_resource" "aws_ansible_nginx_playbook" {
+      - id       = "6393710102456844675" -> null
+      - triggers = {
+          - "file_changed" = "51a9d4666a5f2a44bf3995c4e54cd1b0"
+        } -> null
+    }
+
+  # null_resource.aws_ansible_vhost_playbook will be destroyed
+  - resource "null_resource" "aws_ansible_vhost_playbook" {
+      - id       = "1668525657954860137" -> null
+      - triggers = {
+          - "file_changed" = "51a9d4666a5f2a44bf3995c4e54cd1b0"
+        } -> null
+    }
+
+  # null_resource.aws_ansible_website_playbook will be destroyed
+  - resource "null_resource" "aws_ansible_website_playbook" {
+      - id       = "459187432442292230" -> null
+      - triggers = {
+          - "file_changed" = "51a9d4666a5f2a44bf3995c4e54cd1b0"
+        } -> null
+    }
+
+  # null_resource.check_conf will be destroyed
+  - resource "null_resource" "check_conf" {
+      - id       = "4964770775099574848" -> null
+      - triggers = {
+          - "file_changed" = "bd9a18017fd988be87ca8bc8b2b7219f"
+        } -> null
+    }
+
+  # null_resource.check_tunnels_up will be destroyed
+  - resource "null_resource" "check_tunnels_up" {
+      - id = "299270272359642763" -> null
+    }
+
+  # null_resource.ovh_strongswan_playbook will be destroyed
+  - resource "null_resource" "ovh_strongswan_playbook" {
+      - id       = "7653454619871566427" -> null
+      - triggers = {
+          - "file_changed" = "2281500a01ddd7e85e06368002db7225"
+        } -> null
+    }
+
+  # module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell will be destroyed
+  - resource "aws_instance" "aws-ec2-instance-tf-sell" {
+      - ami                                  = "ami-073e5edf4b5d15fc8" -> null
+      - arn                                  = "arn:aws:ec2:us-east-2:708113109960:instance/i-04bd7a40becc77f20" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-2a" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 1 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "r53-devops" -> null
+      - id                                   = "i-04bd7a40becc77f20" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t2.nano" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "TESTselfmsssULTIME_aws_keypair" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-01dfec6c8c841ab74" -> null
+      - private_dns                          = "ip-10-1-1-133.us-east-2.compute.internal" -> null
+      - private_ip                           = "10.1.1.133" -> null
+      - public_ip                            = "18.225.57.95" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = false -> null
+      - subnet_id                            = "subnet-0e3dd61c3c51ee76a" -> null
+      - tags                                 = {
+          - "Name" = "TESTselfmsssULTIME-ec2-instance"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "TESTselfmsssULTIME-ec2-instance"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-08a8be229d055f86d",
+          - "sg-0a81d5e0b2d5fb189",
+          - "sg-0b220068aea7d6475",
+          - "sg-0b3dad0ce6b294e34",
+          - "sg-0b82c5bd25fea3fe5",
+        ] -> null
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 1 -> null
+        }
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-0ace092df4bdeba0b" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+  # module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell will be destroyed
+  - resource "aws_internet_gateway" "aws-igw-tf-sell" {
+      - arn      = "arn:aws:ec2:us-east-2:708113109960:internet-gateway/igw-00b643f6527a3017d" -> null
+      - id       = "igw-00b643f6527a3017d" -> null
+      - owner_id = "708113109960" -> null
+      - tags     = {
+          - "Name" = "TESTselfmsssULTIME-igw"
+        } -> null
+      - tags_all = {
+          - "Name" = "TESTselfmsssULTIME-igw"
+        } -> null
+      - vpc_id   = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_key_pair.aws-public-key-tf-sell will be destroyed
+  - resource "aws_key_pair" "aws-public-key-tf-sell" {
+      ...
+    }
+
+  # module.create-ec2-instance.aws_route53_record.www will be destroyed
+  - resource "aws_route53_record" "www" {
+      - fqdn                             = "testselfmsssultime.devops.intuitivesoft.cloud" -> null
+      - id                               = "Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A" -> null
+      - multivalue_answer_routing_policy = false -> null
+      - name                             = "testselfmsssultime.devops.intuitivesoft.cloud" -> null
+      - records                          = [
+          - "18.225.57.95",
+        ] -> null
+      - ttl                              = 300 -> null
+      - type                             = "A" -> null
+      - zone_id                          = "Z03385262WMCAFO2KASN1" -> null
+    }
+
+  # module.create-ec2-instance.aws_route_table.aws-public-routetable-tf-sell will be destroyed
+  - resource "aws_route_table" "aws-public-routetable-tf-sell" {
+      - arn              = "arn:aws:ec2:us-east-2:708113109960:route-table/rtb-07223d4403f9d3743" -> null
+      - id               = "rtb-07223d4403f9d3743" -> null
+      - owner_id         = "708113109960" -> null
+      - propagating_vgws = [
+          - "vgw-02945973cdf03e98a",
+        ] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "igw-00b643f6527a3017d"
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "TESTselfmsssULTIME-public-route-table"
+        } -> null
+      - tags_all         = {
+          - "Name" = "TESTselfmsssULTIME-public-route-table"
+        } -> null
+      - vpc_id           = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_route_table_association.aws-rtasso-tf-sell-wsub will be destroyed
+  - resource "aws_route_table_association" "aws-rtasso-tf-sell-wsub" {
+      - id             = "rtbassoc-01c90ee6a9941726e" -> null
+      - route_table_id = "rtb-07223d4403f9d3743" -> null
+      - subnet_id      = "subnet-0e3dd61c3c51ee76a" -> null
+    }
+
+  # module.create-ec2-instance.aws_security_group.aws-sg-http-tf-sell will be destroyed
+  - resource "aws_security_group" "aws-sg-http-tf-sell" {
+      - arn                    = "arn:aws:ec2:us-east-2:708113109960:security-group/sg-0a81d5e0b2d5fb189" -> null
+      - description            = "allow http pour ipv4" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "allow any"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0a81d5e0b2d5fb189" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "http for ipv4"
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 80
+            },
+        ] -> null
+      - name                   = "allow_http" -> null
+      - owner_id               = "708113109960" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "TESTselfmsssULTIME-http-security-group"
+        } -> null
+      - tags_all               = {
+          - "Name" = "TESTselfmsssULTIME-http-security-group"
+        } -> null
+      - vpc_id                 = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_security_group.aws-sg-https-tf-sell will be destroyed
+  - resource "aws_security_group" "aws-sg-https-tf-sell" {
+      - arn                    = "arn:aws:ec2:us-east-2:708113109960:security-group/sg-08a8be229d055f86d" -> null
+      - description            = "allow https pour ipv4" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "allow any"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-08a8be229d055f86d" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "https for ipv4"
+              - from_port        = 443
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 443
+            },
+        ] -> null
+      - name                   = "allow_https" -> null
+      - owner_id               = "708113109960" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "TESTselfmsssULTIME-http-security-group"
+        } -> null
+      - tags_all               = {
+          - "Name" = "TESTselfmsssULTIME-http-security-group"
+        } -> null
+      - vpc_id                 = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_security_group.aws-sg-icmp-tf-sell will be destroyed
+  - resource "aws_security_group" "aws-sg-icmp-tf-sell" {
+      - arn                    = "arn:aws:ec2:us-east-2:708113109960:security-group/sg-0b220068aea7d6475" -> null
+      - description            = "allow icmp pour ipv4" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "allow any"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0b220068aea7d6475" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "icmp for all"
+              - from_port        = -1
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "icmp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = -1
+            },
+        ] -> null
+      - name                   = "allow_icmp" -> null
+      - owner_id               = "708113109960" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "TESTselfmsssULTIME-icmp-security-group"
+        } -> null
+      - tags_all               = {
+          - "Name" = "TESTselfmsssULTIME-icmp-security-group"
+        } -> null
+      - vpc_id                 = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_security_group.aws-sg-rdp-tf-sell will be destroyed
+  - resource "aws_security_group" "aws-sg-rdp-tf-sell" {
+      - arn                    = "arn:aws:ec2:us-east-2:708113109960:security-group/sg-0b82c5bd25fea3fe5" -> null
+      - description            = "allow rdp pour ipv4" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "allow any"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0b82c5bd25fea3fe5" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "rdp for all"
+              - from_port        = 3389
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 3389
+            },
+        ] -> null
+      - name                   = "allow_rdp" -> null
+      - owner_id               = "708113109960" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "TESTselfmsssULTIME-rdp-security-group"
+        } -> null
+      - tags_all               = {
+          - "Name" = "TESTselfmsssULTIME-rdp-security-group"
+        } -> null
+      - vpc_id                 = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_security_group.aws-sg-ssh-tf-sell will be destroyed
+  - resource "aws_security_group" "aws-sg-ssh-tf-sell" {
+      - arn                    = "arn:aws:ec2:us-east-2:708113109960:security-group/sg-0b3dad0ce6b294e34" -> null
+      - description            = "allow ssh pour ipv4" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "allow any"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0b3dad0ce6b294e34" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "ssh for ipv4"
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "allow_ssh" -> null
+      - owner_id               = "708113109960" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "TESTselfmsssULTIME-ssh-security-group"
+        } -> null
+      - tags_all               = {
+          - "Name" = "TESTselfmsssULTIME-ssh-security-group"
+        } -> null
+      - vpc_id                 = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_subnet.aws-private-subnet-tf-sell will be destroyed
+  - resource "aws_subnet" "aws-private-subnet-tf-sell" {
+      - arn                                            = "arn:aws:ec2:us-east-2:708113109960:subnet/subnet-05f79dab467550e3b" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-2a" -> null
+      - availability_zone_id                           = "use2-az1" -> null
+      - cidr_block                                     = "10.1.2.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-05f79dab467550e3b" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "708113109960" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "TESTselfmsssULTIME-private-subnet"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "TESTselfmsssULTIME-private-subnet"
+        } -> null
+      - vpc_id                                         = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_subnet.aws-public-subnet-tf-sell will be destroyed
+  - resource "aws_subnet" "aws-public-subnet-tf-sell" {
+      - arn                                            = "arn:aws:ec2:us-east-2:708113109960:subnet/subnet-0e3dd61c3c51ee76a" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-2a" -> null
+      - availability_zone_id                           = "use2-az1" -> null
+      - cidr_block                                     = "10.1.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0e3dd61c3c51ee76a" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "708113109960" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "TESTselfmsssULTIME-public-subnet"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "TESTselfmsssULTIME-public-subnet"
+        } -> null
+      - vpc_id                                         = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.create-ec2-instance.aws_vpc.awsvpc-tf-sell will be destroyed
+  - resource "aws_vpc" "awsvpc-tf-sell" {
+      - arn                                  = "arn:aws:ec2:us-east-2:708113109960:vpc/vpc-012e09f8d3340842e" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.1.0.0/16" -> null
+      - default_network_acl_id               = "acl-0308dfeb4dc4458e1" -> null
+      - default_route_table_id               = "rtb-0646680f859d73f34" -> null
+      - default_security_group_id            = "sg-04e1127e9529b22ed" -> null
+      - dhcp_options_id                      = "dopt-0132535d50708e6ea" -> null
+      - enable_dns_hostnames                 = false -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-012e09f8d3340842e" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0646680f859d73f34" -> null
+      - owner_id                             = "708113109960" -> null
+      - tags                                 = {
+          - "Name" = "TESTselfmsssULTIME-vpc"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "TESTselfmsssULTIME-vpc"
+        } -> null
+    }
+
+  # module.create-ec2-instance.local_file.aws-private-key-file-tf-sell will be destroyed
+  - resource "local_file" "aws-private-key-file-tf-sell" {
+     ...
+    }
+
+  # module.create-ec2-instance.terraform_data.instance_role will be destroyed
+  - resource "terraform_data" "instance_role" {
+      - id = "ab509e46-db10-61c6-3ea7-9bb5d78383fc" -> null
+    }
+
+  # module.create-ec2-instance.tls_private_key.aws-keypair-rsa-tf-sell will be destroyed
+  - resource "tls_private_key" "aws-keypair-rsa-tf-sell" {
+      ...
+    }
+
+  # module.create-ovh-instance.local_file.privatekey_filename will be destroyed
+  - resource "local_file" "privatekey_filename" {
+      ...
+    }
+
+  # module.create-ovh-instance.openstack_compute_instance_v2.sell_terraform_instance will be destroyed
+  - resource "openstack_compute_instance_v2" "sell_terraform_instance" {
+      - access_ip_v4        = "162.19.119.230" -> null
+      - access_ip_v6        = "[2001:41d0:304:100::4a91]" -> null
+      - all_metadata        = {} -> null
+      - all_tags            = [] -> null
+      - availability_zone   = "nova" -> null
+      - flavor_id           = "e19ede71-744e-482a-a635-12732c39cab2" -> null
+      - flavor_name         = "d2-2" -> null
+      - force_delete        = false -> null
+      - id                  = "538ddfbb-f509-42ec-9044-adf3f8f91a55" -> null
+      - image_id            = "7a3ae5c2-0054-4b00-9ea7-c968d971d242" -> null
+      - image_name          = "Ubuntu 22.04" -> null
+      - key_pair            = "TESTselfmsssULTIME_ovh_keypair" -> null
+      - name                = "TESTselfmsssULTIME_ovh_instance" -> null
+      - power_state         = "active" -> null
+      - region              = "GRA7" -> null
+      - security_groups     = [
+          - "default",
+        ] -> null
+      - stop_before_destroy = false -> null
+      - tags                = [] -> null
+
+      - network {
+          - access_network = false -> null
+          - fixed_ip_v4    = "162.19.119.230" -> null
+          - fixed_ip_v6    = "[2001:41d0:304:100::4a91]" -> null
+          - mac            = "fa:16:3e:22:7d:2b" -> null
+          - name           = "Ext-Net" -> null
+          - uuid           = "393d06cc-a82c-4dc4-a576-c79e8dd67ba3" -> null
+        }
+    }
+
+  # module.create-ovh-instance.openstack_compute_keypair_v2.self_keypair will be destroyed
+  - resource "openstack_compute_keypair_v2" "self_keypair" {
+      ...
+    }
+
+  # module.deploy-vpn-connection.aws_customer_gateway.aws-customergw-tf-sell will be destroyed
+  - resource "aws_customer_gateway" "aws-customergw-tf-sell" {
+      - arn        = "arn:aws:ec2:us-east-2:708113109960:customer-gateway/cgw-08b95770944b6e891" -> null
+      - bgp_asn    = "65000" -> null
+      - id         = "cgw-08b95770944b6e891" -> null
+      - ip_address = "162.19.119.230" -> null
+      - tags       = {
+          - "Name" = "TESTselfmsssULTIME-customergw"
+        } -> null
+      - tags_all   = {
+          - "Name" = "TESTselfmsssULTIME-customergw"
+        } -> null
+      - type       = "ipsec.1" -> null
+    }
+
+  # module.deploy-vpn-connection.aws_route_table.aws-public-routetable-tovgw-tf-sell will be destroyed
+  - resource "aws_route_table" "aws-public-routetable-tovgw-tf-sell" {
+      - arn              = "arn:aws:ec2:us-east-2:708113109960:route-table/rtb-02d20913ace8c0656" -> null
+      - id               = "rtb-02d20913ace8c0656" -> null
+      - owner_id         = "708113109960" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "10.10.1.0/24"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "vgw-02945973cdf03e98a"
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "TESTselfmsssULTIME-public-route-to-vgw-table"
+        } -> null
+      - tags_all         = {
+          - "Name" = "TESTselfmsssULTIME-public-route-to-vgw-table"
+        } -> null
+      - vpc_id           = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.deploy-vpn-connection.aws_vpn_connection.aws-vpnco-tf-sell will be destroyed
+  - resource "aws_vpn_connection" "aws-vpnco-tf-sell" {
+      - arn                                     = "arn:aws:ec2:us-east-2:708113109960:vpn-connection/vpn-09afb488a9dffe38b" -> null
+      - customer_gateway_configuration          = (sensitive value) -> null
+      - customer_gateway_id                     = "cgw-08b95770944b6e891" -> null
+      - enable_acceleration                     = false -> null
+      - id                                      = "vpn-09afb488a9dffe38b" -> null
+      - local_ipv4_network_cidr                 = "0.0.0.0/0" -> null
+      - outside_ip_address_type                 = "PublicIpv4" -> null
+      - remote_ipv4_network_cidr                = "0.0.0.0/0" -> null
+      - routes                                  = [
+          - {
+              - destination_cidr_block = "10.10.1.0/24"
+              - source                 = ""
+              - state                  = "available"
+            },
+        ] -> null
+      - static_routes_only                      = true -> null
+      - tags                                    = {
+          - "Name" = "TESTselfmsssULTIME-vpn"
+        } -> null
+      - tags_all                                = {
+          - "Name" = "TESTselfmsssULTIME-vpn"
+        } -> null
+      - tunnel1_address                         = "3.18.100.123" -> null
+      - tunnel1_bgp_holdtime                    = 0 -> null
+      - tunnel1_cgw_inside_address              = "169.254.19.46" -> null
+      - tunnel1_dpd_timeout_seconds             = 0 -> null
+      - tunnel1_enable_tunnel_lifecycle_control = false -> null
+      - tunnel1_ike_versions                    = [] -> null
+      - tunnel1_inside_cidr                     = "169.254.19.44/30" -> null
+      - tunnel1_phase1_dh_group_numbers         = [] -> null
+      - tunnel1_phase1_encryption_algorithms    = [] -> null
+      - tunnel1_phase1_integrity_algorithms     = [] -> null
+      - tunnel1_phase1_lifetime_seconds         = 0 -> null
+      - tunnel1_phase2_dh_group_numbers         = [] -> null
+      - tunnel1_phase2_encryption_algorithms    = [] -> null
+      - tunnel1_phase2_integrity_algorithms     = [] -> null
+      - tunnel1_phase2_lifetime_seconds         = 0 -> null
+      - tunnel1_preshared_key                   = (sensitive value) -> null
+      - tunnel1_rekey_fuzz_percentage           = 0 -> null
+      - tunnel1_rekey_margin_time_seconds       = 0 -> null
+      - tunnel1_replay_window_size              = 0 -> null
+      - tunnel1_vgw_inside_address              = "169.254.19.45" -> null
+      - tunnel2_address                         = "18.223.244.87" -> null
+      - tunnel2_bgp_holdtime                    = 0 -> null
+      - tunnel2_cgw_inside_address              = "169.254.57.10" -> null
+      - tunnel2_dpd_timeout_seconds             = 0 -> null
+      - tunnel2_enable_tunnel_lifecycle_control = false -> null
+      - tunnel2_ike_versions                    = [] -> null
+      - tunnel2_inside_cidr                     = "169.254.57.8/30" -> null
+      - tunnel2_phase1_dh_group_numbers         = [] -> null
+      - tunnel2_phase1_encryption_algorithms    = [] -> null
+      - tunnel2_phase1_integrity_algorithms     = [] -> null
+      - tunnel2_phase1_lifetime_seconds         = 0 -> null
+      - tunnel2_phase2_dh_group_numbers         = [] -> null
+      - tunnel2_phase2_encryption_algorithms    = [] -> null
+      - tunnel2_phase2_integrity_algorithms     = [] -> null
+      - tunnel2_phase2_lifetime_seconds         = 0 -> null
+      - tunnel2_preshared_key                   = (sensitive value) -> null
+      - tunnel2_rekey_fuzz_percentage           = 0 -> null
+      - tunnel2_rekey_margin_time_seconds       = 0 -> null
+      - tunnel2_replay_window_size              = 0 -> null
+      - tunnel2_vgw_inside_address              = "169.254.57.9" -> null
+      - tunnel_inside_ip_version                = "ipv4" -> null
+      - type                                    = "ipsec.1" -> null
+      - vgw_telemetry                           = [
+          - {
+              - accepted_route_count = 1
+              - certificate_arn      = ""
+              - last_status_change   = "2023-11-03T12:40:07Z"
+              - outside_ip_address   = "18.223.244.87"
+              - status               = "UP"
+              - status_message       = ""
+            },
+          - {
+              - accepted_route_count = 1
+              - certificate_arn      = ""
+              - last_status_change   = "2023-11-03T12:40:15Z"
+              - outside_ip_address   = "3.18.100.123"
+              - status               = "UP"
+              - status_message       = ""
+            },
+        ] -> null
+      - vpn_gateway_id                          = "vgw-02945973cdf03e98a" -> null
+
+      - tunnel1_log_options {
+          - cloudwatch_log_options {
+              - log_enabled = false -> null
+            }
+        }
+
+      - tunnel2_log_options {
+          - cloudwatch_log_options {
+              - log_enabled = false -> null
+            }
+        }
+    }
+
+  # module.deploy-vpn-connection.aws_vpn_connection_route.aws-vpnco-route-tf-sell will be destroyed
+  - resource "aws_vpn_connection_route" "aws-vpnco-route-tf-sell" {
+      - destination_cidr_block = "10.10.1.0/24" -> null
+      - id                     = "10.10.1.0/24:vpn-09afb488a9dffe38b" -> null
+      - vpn_connection_id      = "vpn-09afb488a9dffe38b" -> null
+    }
+
+  # module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell will be destroyed
+  - resource "aws_vpn_gateway" "aws-vpngw-tf-sell" {
+      - amazon_side_asn = "64512" -> null
+      - arn             = "arn:aws:ec2:us-east-2:708113109960:vpn-gateway/vgw-02945973cdf03e98a" -> null
+      - id              = "vgw-02945973cdf03e98a" -> null
+      - tags            = {
+          - "Name" = "TESTselfmsssULTIME-vpngw"
+        } -> null
+      - tags_all        = {
+          - "Name" = "TESTselfmsssULTIME-vpngw"
+        } -> null
+      - vpc_id          = "vpc-012e09f8d3340842e" -> null
+    }
+
+  # module.deploy-vpn-connection.aws_vpn_gateway_route_propagation.aws-vpngw-routepropa-tf-sell will be destroyed
+  - resource "aws_vpn_gateway_route_propagation" "aws-vpngw-routepropa-tf-sell" {
+      - id             = "vgw-02945973cdf03e98a_rtb-07223d4403f9d3743" -> null
+      - route_table_id = "rtb-07223d4403f9d3743" -> null
+      - vpn_gateway_id = "vgw-02945973cdf03e98a" -> null
+    }
+
+  # module.deploy-vpn-connection.local_file.ansible_vars_tf-sell will be destroyed
+  - resource "local_file" "ansible_vars_tf-sell" {
+      - content              = (sensitive value) -> null
+      - content_base64sha256 = "BlcQVWdmmux1jYsuAkTpt3Y/QxOVE3f0EXlEzgYdSI8=" -> null
+      - content_base64sha512 = "2IWDStfAwKoZ1mBgv9odF+Zb0deESbVPNUZDvx/AJnLtZyHsNXwBTx3qSz3HhcH/gxcGAJPrrZeSAYWDV5VvTw==" -> null
+      - content_md5          = "3ed36c82876dbd5aac0c94066610934a" -> null
+      - content_sha1         = "6e3b58187fbc1205e9d3d2fea4c161cf83c30c00" -> null
+      - content_sha256       = "0657105567669aec758d8b2e0244e9b7763f4313951377f4117944ce061d488f" -> null
+      - content_sha512       = "d885834ad7c0c0aa19d66060bfda1d17e65bd1d78449b54f354643bf1fc02672ed6721ec357c014f1dea4b3dc785c1ff8317060093ebad979201858357956f4f" -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "./modules/install-strongswan-on-ovh/vars/variables.yml" -> null
+      - id                   = "6e3b58187fbc1205e9d3d2fea4c161cf83c30c00" -> null
+    }
+
+Plan: 0 to add, 0 to change, 43 to destroy.
+
+Changes to Outputs:
+  - aws_link      = "https://TESTselfmsssULTIME.devops.intuitivesoft.cloud." -> null
+  - aws_public_ip = "18.225.57.95" -> null
+  - ovh_public_ip = "162.19.119.230" -> null
+null_resource.check_conf: Destroying... [id=4964770775099574848]
+null_resource.aws_ansible_certificate_playbook: Destroying... [id=1526997868748340203]
+null_resource.check_conf: Destruction complete after 0s
+null_resource.aws_ansible_certificate_playbook: Destruction complete after 0s
+null_resource.aws_ansible_website_playbook: Destroying... [id=459187432442292230]
+null_resource.check_tunnels_up: Destroying... [id=299270272359642763]
+null_resource.aws_ansible_website_playbook: Destruction complete after 0s
+null_resource.check_tunnels_up: Destruction complete after 0s
+null_resource.aws_ansible_vhost_playbook: Destroying... [id=1668525657954860137]
+null_resource.aws_ansible_vhost_playbook: Destruction complete after 0s
+null_resource.ovh_strongswan_playbook: Destroying... [id=7653454619871566427]
+null_resource.ovh_strongswan_playbook: Destruction complete after 0s
+local_file.ansible_check_inventory_file: Destroying... [id=c31cbf4899d7fcb7e4b63d7e149312af9dcc513f]
+null_resource.aws_ansible_nginx_playbook: Destroying... [id=6393710102456844675]
+local_file.ansible_check_vars_file: Destroying... [id=5a5fab6ebd83e00ad7e33b8eb843cdfa064d7be5]
+local_file.aws_ansible_website_config_file: Destroying... [id=0f1737acc32f17be2554840d56c09cf26d4f74ea]
+local_file.ansible_check_inventory_file: Destruction complete after 0s
+local_file.aws_ansible_website_generic_file: Destroying... [id=7872974a5bf453216a4bc18986d45de0cd675d38]
+local_file.aws_ansible_website_inventory_file: Destroying... [id=747ee582055fcc91aa0dfa63c582efbe46154373]
+module.deploy-vpn-connection.local_file.ansible_vars_tf-sell: Destroying... [id=6e3b58187fbc1205e9d3d2fea4c161cf83c30c00]
+null_resource.aws_ansible_nginx_playbook: Destruction complete after 0s
+module.create-ovh-instance.local_file.privatekey_filename: Destroying... [id=470dce06f09a94a15586925e1079770b1ac352f6]
+local_file.ovh_ansible_inventory_file: Destroying... [id=df37d8148f3c11782307436f89b4302753f87e48]
+local_file.aws_ansible_website_config_file: Destruction complete after 0s
+local_file.ansible_check_vars_file: Destruction complete after 0s
+local_file.aws_ansible_website_generic_file: Destruction complete after 0s
+local_file.aws_ansible_website_inventory_file: Destruction complete after 0s
+local_file.ovh_ansible_config_file: Destroying... [id=0f1737acc32f17be2554840d56c09cf26d4f74ea]
+module.deploy-vpn-connection.local_file.ansible_vars_tf-sell: Destruction complete after 0s
+local_file.aws_ansible_nginx_config_file: Destroying... [id=0f1737acc32f17be2554840d56c09cf26d4f74ea]
+local_file.aws_ansible_nginx_inventory_file: Destroying... [id=747ee582055fcc91aa0dfa63c582efbe46154373]
+local_file.aws_ansible_nginx_inventory_file: Destruction complete after 0s
+local_file.ovh_ansible_inventory_file: Destruction complete after 0s
+module.create-ovh-instance.local_file.privatekey_filename: Destruction complete after 0s
+local_file.ovh_ansible_config_file: Destruction complete after 0s
+local_file.aws_ansible_nginx_config_file: Destruction complete after 0s
+module.deploy-vpn-connection.aws_vpn_gateway_route_propagation.aws-vpngw-routepropa-tf-sell: Destroying... [id=vgw-02945973cdf03e98a_rtb-07223d4403f9d3743]
+module.deploy-vpn-connection.aws_vpn_connection_route.aws-vpnco-route-tf-sell: Destroying... [id=10.10.1.0/24:vpn-09afb488a9dffe38b]
+module.deploy-vpn-connection.aws_route_table.aws-public-routetable-tovgw-tf-sell: Destroying... [id=rtb-02d20913ace8c0656]
+module.deploy-vpn-connection.aws_vpn_gateway_route_propagation.aws-vpngw-routepropa-tf-sell: Destruction complete after 1s
+module.deploy-vpn-connection.aws_vpn_connection_route.aws-vpnco-route-tf-sell: Destruction complete after 1s
+module.deploy-vpn-connection.aws_route_table.aws-public-routetable-tovgw-tf-sell: Destruction complete after 1s
+module.deploy-vpn-connection.aws_vpn_connection.aws-vpnco-tf-sell: Destroying... [id=vpn-09afb488a9dffe38b]
+module.deploy-vpn-connection.aws_vpn_connection.aws-vpnco-tf-sell: Still destroying... [id=vpn-09afb488a9dffe38b, 10s elapsed]
+module.deploy-vpn-connection.aws_vpn_connection.aws-vpnco-tf-sell: Destruction complete after 11s
+module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell: Destroying... [id=vgw-02945973cdf03e98a]
+module.deploy-vpn-connection.aws_customer_gateway.aws-customergw-tf-sell: Destroying... [id=cgw-08b95770944b6e891]
+module.deploy-vpn-connection.aws_customer_gateway.aws-customergw-tf-sell: Destruction complete after 1s
+module.create-ovh-instance.openstack_compute_instance_v2.sell_terraform_instance: Destroying... [id=538ddfbb-f509-42ec-9044-adf3f8f91a55]
+module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell: Still destroying... [id=vgw-02945973cdf03e98a, 10s elapsed]
+module.create-ovh-instance.openstack_compute_instance_v2.sell_terraform_instance: Still destroying... [id=538ddfbb-f509-42ec-9044-adf3f8f91a55, 10s elapsed]
+module.create-ovh-instance.openstack_compute_instance_v2.sell_terraform_instance: Destruction complete after 11s
+module.create-ovh-instance.openstack_compute_keypair_v2.self_keypair: Destroying... [id=TESTselfmsssULTIME_ovh_keypair]
+module.create-ovh-instance.openstack_compute_keypair_v2.self_keypair: Destruction complete after 0s
+module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell: Still destroying... [id=vgw-02945973cdf03e98a, 20s elapsed]
+module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell: Still destroying... [id=vgw-02945973cdf03e98a, 30s elapsed]
+module.deploy-vpn-connection.aws_vpn_gateway.aws-vpngw-tf-sell: Destruction complete after 36s
+module.create-ec2-instance.terraform_data.instance_role: Destroying... [id=ab509e46-db10-61c6-3ea7-9bb5d78383fc]
+module.create-ec2-instance.terraform_data.instance_role: Destruction complete after 0s
+module.create-ec2-instance.local_file.aws-private-key-file-tf-sell: Destroying... [id=f0cdcdbf48c57b058be9b49edb26d9e359555e0d]
+module.create-ec2-instance.aws_subnet.aws-private-subnet-tf-sell: Destroying... [id=subnet-05f79dab467550e3b]
+module.create-ec2-instance.aws_route53_record.www: Destroying... [id=Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A]
+module.create-ec2-instance.aws_route_table_association.aws-rtasso-tf-sell-wsub: Destroying... [id=rtbassoc-01c90ee6a9941726e]
+module.create-ec2-instance.local_file.aws-private-key-file-tf-sell: Destruction complete after 0s
+module.create-ec2-instance.aws_route_table_association.aws-rtasso-tf-sell-wsub: Destruction complete after 0s
+module.create-ec2-instance.aws_route_table.aws-public-routetable-tf-sell: Destroying... [id=rtb-07223d4403f9d3743]
+module.create-ec2-instance.aws_subnet.aws-private-subnet-tf-sell: Destruction complete after 0s
+module.create-ec2-instance.aws_route_table.aws-public-routetable-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Destroying... [id=igw-00b643f6527a3017d]
+module.create-ec2-instance.aws_route53_record.www: Still destroying... [id=Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A, 10s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 10s elapsed]
+module.create-ec2-instance.aws_route53_record.www: Still destroying... [id=Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A, 20s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 20s elapsed]
+module.create-ec2-instance.aws_route53_record.www: Still destroying... [id=Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A, 30s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 30s elapsed]
+module.create-ec2-instance.aws_route53_record.www: Still destroying... [id=Z03385262WMCAFO2KASN1_testselfmsssultime.devops.intuitivesoft.cloud._A, 40s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 40s elapsed]
+module.create-ec2-instance.aws_route53_record.www: Destruction complete after 42s
+module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell: Destroying... [id=i-04bd7a40becc77f20]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 50s elapsed]
+module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell: Still destroying... [id=i-04bd7a40becc77f20, 10s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 1m0s elapsed]
+module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell: Still destroying... [id=i-04bd7a40becc77f20, 20s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Still destroying... [id=igw-00b643f6527a3017d, 1m10s elapsed]
+module.create-ec2-instance.aws_internet_gateway.aws-igw-tf-sell: Destruction complete after 1m11s
+module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell: Still destroying... [id=i-04bd7a40becc77f20, 30s elapsed]
+module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell: Destruction complete after 32s
+module.create-ec2-instance.aws_security_group.aws-sg-http-tf-sell: Destroying... [id=sg-0a81d5e0b2d5fb189]
+module.create-ec2-instance.aws_key_pair.aws-public-key-tf-sell: Destroying... [id=TESTselfmsssULTIME_aws_keypair]
+module.create-ec2-instance.aws_security_group.aws-sg-https-tf-sell: Destroying... [id=sg-08a8be229d055f86d]
+module.create-ec2-instance.aws_security_group.aws-sg-icmp-tf-sell: Destroying... [id=sg-0b220068aea7d6475]
+module.create-ec2-instance.aws_security_group.aws-sg-rdp-tf-sell: Destroying... [id=sg-0b82c5bd25fea3fe5]
+module.create-ec2-instance.aws_subnet.aws-public-subnet-tf-sell: Destroying... [id=subnet-0e3dd61c3c51ee76a]
+module.create-ec2-instance.aws_security_group.aws-sg-ssh-tf-sell: Destroying... [id=sg-0b3dad0ce6b294e34]
+module.create-ec2-instance.aws_key_pair.aws-public-key-tf-sell: Destruction complete after 0s
+module.create-ec2-instance.tls_private_key.aws-keypair-rsa-tf-sell: Destroying... [id=007e4f6112965cc90f52229636a719508ac06e0c]
+module.create-ec2-instance.tls_private_key.aws-keypair-rsa-tf-sell: Destruction complete after 0s
+module.create-ec2-instance.aws_security_group.aws-sg-icmp-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_security_group.aws-sg-http-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_subnet.aws-public-subnet-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_security_group.aws-sg-rdp-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_security_group.aws-sg-https-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_security_group.aws-sg-ssh-tf-sell: Destruction complete after 1s
+module.create-ec2-instance.aws_vpc.awsvpc-tf-sell: Destroying... [id=vpc-012e09f8d3340842e]
+module.create-ec2-instance.aws_vpc.awsvpc-tf-sell: Destruction complete after 1s
+
+Destroy complete! Resources: 43 destroyed.
+
+------------------------------
+------ that s all folks ------
+------------------------------
+ubuntu@Ubuntu-22:~/MSSS/work/TESTFINALPROJECT10/mss-self-project$ ll

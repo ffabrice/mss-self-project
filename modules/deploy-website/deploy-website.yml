@@ -1,0 +1,16 @@
+- name: Deploy devops website
+  gather_facts: yes                         
+  hosts: webservers                  
+  
+  vars_files:
+    - vars/generic.yml
+  
+  tasks:  
+  - name: change index.html
+    ansible.builtin.copy:
+      src: files/index.html
+      dest: /var/www/{{domain}}/index.html
+      mode: '0775'
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+    become: true

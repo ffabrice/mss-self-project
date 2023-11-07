@@ -1,0 +1,7 @@
+net.ipv4.ip_forward = 1
+net.ipv4.conf.Tunnel1.rp_filter = 2
+net.ipv4.conf.Tunnel1.disable_policy = 1
+net.ipv4.conf.Tunnel2.rp_filter = 2
+net.ipv4.conf.Tunnel2.disable_policy = 1
+net.ipv4.conf.ens3.disable_xfrm = 1
+net.ipv4.conf.ens3.disable_policy = 1

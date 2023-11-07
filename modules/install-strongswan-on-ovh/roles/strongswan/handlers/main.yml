@@ -1,0 +1,5 @@
+---
+# Restart service when config files has been changed
+- name: restart ipsec
+  ansible.builtin.command:
+    cmd: sudo ipsec restart

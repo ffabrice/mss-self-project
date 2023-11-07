@@ -1,0 +1,284 @@
+terraform scan results:
+
+Passed checks: 28, Failed checks: 9, Skipped checks: 0
+
+Check: CKV_AWS_24: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
+	FAILED for resource: module.create-ec2-instance.aws_security_group.aws-sg-ssh-tf-sell
+	File: /modules/create-ec2-instance/main.tf:63-88
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-1-port-security
+
+		63 | resource "aws_security_group" "aws-sg-ssh-tf-sell" {
+		64 |   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+		65 |   name        = "allow_ssh"
+		66 |   description = "allow ssh pour ipv4"
+		67 | 
+		68 |   ingress {
+		69 |     description = "ssh for ipv4"
+		70 |     from_port   = 22
+		71 |     to_port     = 22
+		72 |     protocol    = "tcp"
+		73 |     #cidr_blocks = [data.aws_vpc.awsvpc-tf-sel.cidr_block]
+		74 |     cidr_blocks = ["0.0.0.0/0"]
+		75 |   }
+		76 | 
+		77 |   egress {
+		78 |     description = "allow any"
+		79 |     from_port   = 0
+		80 |     to_port     = 0
+		81 |     protocol    = "-1"
+		82 |     cidr_blocks = ["0.0.0.0/0"]
+		83 |   }
+		84 | 
+		85 |   tags = {
+		86 |     Name = "${var.aws_pod}-${var.aws_security_group_sufx_ssh}"
+		87 |   }
+		88 | }
+
+Check: CKV_AWS_25: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 3389"
+	FAILED for resource: module.create-ec2-instance.aws_security_group.aws-sg-rdp-tf-sell
+	File: /modules/create-ec2-instance/main.tf:91-115
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/networking-2
+
+		91  | resource "aws_security_group" "aws-sg-rdp-tf-sell" {
+		92  |   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+		93  |   name        = "allow_rdp"
+		94  |   description = "allow rdp pour ipv4"
+		95  | 
+		96  |   ingress {
+		97  |     description = "rdp for all"
+		98  |     from_port   = 3389
+		99  |     to_port     = 3389
+		100 |     protocol    = "tcp"
+		101 |     cidr_blocks = ["0.0.0.0/0"]
+		102 |   }
+		103 | 
+		104 |   egress {
+		105 |     description = "allow any"
+		106 |     from_port   = 0
+		107 |     to_port     = 0
+		108 |     protocol    = "-1"
+		109 |     cidr_blocks = ["0.0.0.0/0"]
+		110 |   }
+		111 | 
+		112 |   tags = {
+		113 |     Name = "${var.aws_pod}-${var.aws_security_group_sufx_rdp}"
+		114 |   }
+		115 | }
+
+Check: CKV_AWS_277: "Ensure no security groups allow ingress from 0.0.0.0:0 to port -1"
+	FAILED for resource: module.create-ec2-instance.aws_security_group.aws-sg-icmp-tf-sell
+	File: /modules/create-ec2-instance/main.tf:118-142
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-group-does-not-allow-all-traffic-on-all-ports
+
+		118 | resource "aws_security_group" "aws-sg-icmp-tf-sell" {
+		119 |   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+		120 |   name        = "allow_icmp"
+		121 |   description = "allow icmp pour ipv4"
+		122 | 
+		123 |   ingress {
+		124 |     description = "icmp for all"
+		125 |     from_port   = -1
+		126 |     to_port     = -1
+		127 |     protocol    = "icmp"
+		128 |     cidr_blocks = ["0.0.0.0/0"]
+		129 |   }
+		130 | 
+		131 |   egress {
+		132 |     description = "allow any"
+		133 |     from_port   = 0
+		134 |     to_port     = 0
+		135 |     protocol    = "-1"
+		136 |     cidr_blocks = ["0.0.0.0/0"]
+		137 |   }
+		138 | 
+		139 |   tags = {
+		140 |     Name = "${var.aws_pod}-${var.aws_security_group_sufx_icmp}"
+		141 |   }
+		142 | }
+
+Check: CKV_AWS_260: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 80"
+	FAILED for resource: module.create-ec2-instance.aws_security_group.aws-sg-http-tf-sell
+	File: /modules/create-ec2-instance/main.tf:145-170
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-security-groups-do-not-allow-ingress-from-00000-to-port-80
+
+		145 | resource "aws_security_group" "aws-sg-http-tf-sell" {
+		146 |   vpc_id      = resource.aws_vpc.awsvpc-tf-sell.id
+		147 |   name        = "allow_http"
+		148 |   description = "allow http pour ipv4"
+		149 | 
+		150 |   ingress {
+		151 |     description = "http for ipv4"
+		152 |     from_port   = 80
+		153 |     to_port     = 80
+		154 |     protocol    = "tcp"
+		155 |     #cidr_blocks = [data.aws_vpc.awsvpc-tf-sel.cidr_block]
+		156 |     cidr_blocks = ["0.0.0.0/0"]
+		157 |   }
+		158 | 
+		159 |   egress {
+		160 |     description = "allow any"
+		161 |     from_port   = 0
+		162 |     to_port     = 0
+		163 |     protocol    = "-1"
+		164 |     cidr_blocks = ["0.0.0.0/0"]
+		165 |   }
+		166 | 
+		167 |   tags = {
+		168 |     Name = "${var.aws_pod}-${var.aws_security_group_sufx_http}"
+		169 |   }
+		170 | }
+
+Check: CKV_AWS_135: "Ensure that EC2 is EBS optimized"
+	FAILED for resource: module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell
+	File: /modules/create-ec2-instance/main.tf:241-262
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-ec2-is-ebs-optimized
+
+		241 | resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242 |   
+		243 |   ami = data.aws_ami.ubuntu.id
+		244 |   instance_type = var.aws_ec2_instance_type
+		245 | 
+		246 |   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+		247 |   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+		248 |                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+		249 |                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+		250 |                             resource.aws_security_group.aws-sg-http-tf-sell.id,
+		251 |                             resource.aws_security_group.aws-sg-https-tf-sell.id]
+		252 |   
+		253 |   key_name = resource.aws_key_pair.aws-public-key-tf-sell.key_name
+		254 | 
+		255 |   associate_public_ip_address = true
+		256 | 
+		257 |   source_dest_check = false
+		258 | 
+		259 |   tags = {
+		260 |     Name = "${var.aws_pod}-${var.aws_ec2_instance_sufx}"
+		261 |   }
+		262 | }
+
+Check: CKV_AWS_8: "Ensure all data stored in the Launch configuration or instance Elastic Blocks Store is securely encrypted"
+	FAILED for resource: module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell
+	File: /modules/create-ec2-instance/main.tf:241-262
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-13
+
+		241 | resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242 |   
+		243 |   ami = data.aws_ami.ubuntu.id
+		244 |   instance_type = var.aws_ec2_instance_type
+		245 | 
+		246 |   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+		247 |   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+		248 |                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+		249 |                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+		250 |                             resource.aws_security_group.aws-sg-http-tf-sell.id,
+		251 |                             resource.aws_security_group.aws-sg-https-tf-sell.id]
+		252 |   
+		253 |   key_name = resource.aws_key_pair.aws-public-key-tf-sell.key_name
+		254 | 
+		255 |   associate_public_ip_address = true
+		256 | 
+		257 |   source_dest_check = false
+		258 | 
+		259 |   tags = {
+		260 |     Name = "${var.aws_pod}-${var.aws_ec2_instance_sufx}"
+		261 |   }
+		262 | }
+
+Check: CKV_AWS_79: "Ensure Instance Metadata Service Version 1 is not enabled"
+	FAILED for resource: module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell
+	File: /modules/create-ec2-instance/main.tf:241-262
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-31
+
+		241 | resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242 |   
+		243 |   ami = data.aws_ami.ubuntu.id
+		244 |   instance_type = var.aws_ec2_instance_type
+		245 | 
+		246 |   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+		247 |   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+		248 |                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+		249 |                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+		250 |                             resource.aws_security_group.aws-sg-http-tf-sell.id,
+		251 |                             resource.aws_security_group.aws-sg-https-tf-sell.id]
+		252 |   
+		253 |   key_name = resource.aws_key_pair.aws-public-key-tf-sell.key_name
+		254 | 
+		255 |   associate_public_ip_address = true
+		256 | 
+		257 |   source_dest_check = false
+		258 | 
+		259 |   tags = {
+		260 |     Name = "${var.aws_pod}-${var.aws_ec2_instance_sufx}"
+		261 |   }
+		262 | }
+
+Check: CKV_AWS_88: "EC2 instance should not have public IP."
+	FAILED for resource: module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell
+	File: /modules/create-ec2-instance/main.tf:241-262
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/public-policies/public-12
+
+		241 | resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242 |   
+		243 |   ami = data.aws_ami.ubuntu.id
+		244 |   instance_type = var.aws_ec2_instance_type
+		245 | 
+		246 |   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+		247 |   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+		248 |                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+		249 |                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+		250 |                             resource.aws_security_group.aws-sg-http-tf-sell.id,
+		251 |                             resource.aws_security_group.aws-sg-https-tf-sell.id]
+		252 |   
+		253 |   key_name = resource.aws_key_pair.aws-public-key-tf-sell.key_name
+		254 | 
+		255 |   associate_public_ip_address = true
+		256 | 
+		257 |   source_dest_check = false
+		258 | 
+		259 |   tags = {
+		260 |     Name = "${var.aws_pod}-${var.aws_ec2_instance_sufx}"
+		261 |   }
+		262 | }
+
+Check: CKV_AWS_126: "Ensure that detailed monitoring is enabled for EC2 instances"
+	FAILED for resource: module.create-ec2-instance.aws_instance.aws-ec2-instance-tf-sell
+	File: /modules/create-ec2-instance/main.tf:241-262
+	Calling File: /main.tf:22-52
+	Guide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/ensure-that-detailed-monitoring-is-enabled-for-ec2-instances
+
+		241 | resource "aws_instance" "aws-ec2-instance-tf-sell" {
+		242 |   
+		243 |   ami = data.aws_ami.ubuntu.id
+		244 |   instance_type = var.aws_ec2_instance_type
+		245 | 
+		246 |   subnet_id = resource.aws_subnet.aws-public-subnet-tf-sell.id
+		247 |   vpc_security_group_ids = [resource.aws_security_group.aws-sg-ssh-tf-sell.id,
+		248 |                             resource.aws_security_group.aws-sg-rdp-tf-sell.id,
+		249 |                             resource.aws_security_group.aws-sg-icmp-tf-sell.id,
+		250 |                             resource.aws_security_group.aws-sg-http-tf-sell.id,
+		251 |                             resource.aws_security_group.aws-sg-https-tf-sell.id]
+		252 |   
+		253 |   key_name = resource.aws_key_pair.aws-public-key-tf-sell.key_name
+		254 | 
+		255 |   associate_public_ip_address = true
+		256 | 
+		257 |   source_dest_check = false
+		258 | 
+		259 |   tags = {
+		260 |     Name = "${var.aws_pod}-${var.aws_ec2_instance_sufx}"
+		261 |   }
+		262 | }
+
+ansible scan results:
+
+Passed checks: 4, Failed checks: 0, Skipped checks: 0
+
+

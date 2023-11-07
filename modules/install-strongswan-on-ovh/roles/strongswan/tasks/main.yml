@@ -1,0 +1,27 @@
+---
+# Tasks to install and configure strongSwan
+
+- name: Install strongSwan 
+  ansible.builtin.apt: pkg=strongswan state=present
+
+- name: Configure ipsec.conf 
+  template: src=ipsec.conf.j2 dest={{ strongswan_base }}/ipsec.conf owner=root group=root mode=0644
+  notify: restart ipsec
+
+- name: Configure ipsec.secrets
+  template: src=ipsec.secrets.j2 dest={{ strongswan_base }}/ipsec.secrets owner=root group=root mode=0600
+  notify: restart ipsec
+
+- name: Prepare Tunnel Installation Script
+  template: src=install-tunnels.j2 dest=install-tunnels.sh owner=root group=root mode=0600
+  notify: restart ipsec
+
+- name: Execute Script
+  ansible.builtin.shell: sh install-tunnels.sh >> install-tunnels.log
+  args:
+    executable: /bin/bash
+
+- name: Retrieve Script output 
+  ansible.builtin.fetch: 
+    src: install-tunnels.log
+    dest: install-tunnels.log

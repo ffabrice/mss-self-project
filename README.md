@@ -3,7 +3,7 @@
 * **S**.andie VAN HULLE 
 * **E**.ric BADELLON
 * **L**.ionel GIRARD 
-* **F**.abrice FIQUEMO
+* **F**.abrice F
 
 ## mss-self-project
 
@@ -291,7 +291,7 @@ Equipe S.E.L.F. :
 Sandie Van Hulle, 
 Eric Badellon, 
 Lionel Girard, 
-Fabrice Fiquemo
+FF
 
 
 --
